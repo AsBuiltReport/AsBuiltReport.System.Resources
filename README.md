@@ -25,7 +25,7 @@
 </p>
 
 <p align="center">
-    <a href='https://ko-fi.com/B0B7DDGZ7' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+    <a href='https://ko-fi.com/F1F8DEV80' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 </p>
 <!-- ********** DO NOT EDIT THESE LINKS ********** -->
 
@@ -54,6 +54,37 @@ This report is compatible with the following PowerShell versions;
 | Windows PowerShell 5.1 |     PowerShell 7    |
 |:----------------------:|:--------------------:|
 |   :white_check_mark:   | :white_check_mark: |
+
+## 🗺️ Language Support
+### Supported Languages
+- English (US) (Default)
+- English (GB)
+- Arabic (SA)
+- Czech (CZ)
+- Danish (DK)
+- Dutch (NL)
+- Finnish (FI)
+- French (FR)
+- German (DE)
+- Greek (GR)
+- Hebrew (IL)
+- Hindi (HI)
+- Hungarian (HU)
+- Italian (IT)
+- Japanese (JP)
+- Korean (KR)
+- Norwegian (NO)
+- Polish (PL)
+- Portuguese (PT)
+- Russian (RU)
+- Simplified Chinese
+- Spanish (ES)
+- Swedish (SE)
+- Thai (TH)
+- Traditional Chinese
+- Turkish (TR)
+- Vietnamese (VN)
+
 ## :wrench: System Requirements
 <!-- ********** Update system requirements ********** -->
 PowerShell 5.1 or PowerShell 7, and the following PowerShell modules are required for generating a System Resources As Built Report.

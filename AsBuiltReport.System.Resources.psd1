@@ -24,7 +24,7 @@
     Author = 'Jonathan Colon'
 
     # Company or vendor of this module
-    CompanyName = 'Unknown'
+    # CompanyName = 'Unknown'
 
     # Copyright statement for this module
     Copyright = '(c) 2025 Jonathan Colon. All rights reserved.'
@@ -78,13 +78,13 @@
     FunctionsToExport = @('Invoke-AsBuiltReport.System.Resources')
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-    CmdletsToExport = @()
+    # CmdletsToExport = @()
 
     # Variables to export from this module
-    VariablesToExport = @()
+    # VariablesToExport = @()
 
     # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-    AliasesToExport = @()
+    # AliasesToExport = @()
 
     # DSC resources to export from this module
     # DscResourcesToExport = @()
@@ -101,16 +101,16 @@
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            # Tags = @()
+            Tags = 'AsBuiltReport', 'Report', 'Documentation', 'PScribo', 'Windows', 'Linux', 'MacOS', 'PSEdition_Desktop', 'PSEdition_Core'
 
             # A URL to the license for this module.
-            # LicenseUri = ''
+            LicenseUri = 'https://raw.githubusercontent.com/AsBuiltReport/AsBuiltReport.System.Resources/master/LICENSE'
 
             # A URL to the main website for this project.
-            # ProjectUri = ''
+            ProjectUri = 'https://github.com/AsBuiltReport/AsBuiltReport.System.Resources'
 
             # A URL to an icon representing this module.
-            # IconUri = ''
+            IconUri = 'https://raw.githubusercontent.com/AsBuiltReport/.github/main/profile/images/AsBuiltReport.png'
 
             # ReleaseNotes of this module
             # ReleaseNotes = ''

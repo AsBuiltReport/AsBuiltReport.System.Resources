@@ -1,4 +1,4 @@
-# culture = 'en-US'
+# culture = 'en-GB'
 @{
 
     # Get-AbrDate
