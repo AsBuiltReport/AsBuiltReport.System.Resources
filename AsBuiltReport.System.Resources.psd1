@@ -21,13 +21,13 @@
     GUID = 'f930270b-607d-422b-bd94-b6665bcc5b96'
 
     # Author of this module
-    Author = 'Jonathan Colon'
+    Author = 'AsBuiltReport Community'
 
     # Company or vendor of this module
     # CompanyName = 'Unknown'
 
     # Copyright statement for this module
-    Copyright = '(c) 2025 Jonathan Colon. All rights reserved.'
+    Copyright = '(c) 2025 AsBuiltReport. All rights reserved.'
 
     # Description of the functionality provided by this module
     Description = 'A PowerShell module to generate an as built report on the configuration of System Resources.'
