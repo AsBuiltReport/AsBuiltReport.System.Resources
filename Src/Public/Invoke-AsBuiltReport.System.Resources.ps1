@@ -6,7 +6,7 @@ function Invoke-AsBuiltReport.System.Resources {
         Documents the configuration of System Resources in Word/HTML/Text formats using PScribo.
     .NOTES
         Version:        0.1.1
-        Author:         AsBuiltReport Organization
+        Author:         AsBuiltReport Community
         Twitter:        @AsBuiltReport
         Github:         AsBuiltReport
         Credits:        Iain Brighton (@iainbrighton) - PScribo module
