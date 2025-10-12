@@ -55,7 +55,7 @@
     RequiredModules = @(
         @{
             ModuleName = 'AsBuiltReport.Core';
-            ModuleVersion = '1.4.3'
+            ModuleVersion = '1.5.0'
         }
     )
 

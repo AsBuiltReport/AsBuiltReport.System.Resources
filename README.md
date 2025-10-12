@@ -51,8 +51,8 @@ The System Resources As Built Report supports the following Resources versions;
 This report is compatible with the following PowerShell versions;
 
 <!-- ********** Update supported PowerShell versions ********** -->
-| Windows PowerShell 5.1 |     PowerShell 7    |
-|:----------------------:|:--------------------:|
+| Windows PowerShell 5.1 |    PowerShell 7    |
+| :--------------------: | :----------------: |
 |   :white_check_mark:   | :white_check_mark: |
 
 ## 🗺️ Language Support
@@ -92,8 +92,11 @@ PowerShell 5.1 or PowerShell 7, and the following PowerShell modules are require
 - [AsBuiltReport.System.Resources Module](https://www.powershellgallery.com/packages/AsBuiltReport.System.Resources/)
 
 ### :closed_lock_with_key: Required Privileges
-<!-- ********** Define required privileges ********** -->
-<!-- ********** Try to follow best practices to define least privileges ********** -->
+
+Local user privileges are required to run this report.
+
+> [!IMPORTANT]
+> The intention of this report is to demonstrate the multi-language capabilities of the AsBuiltReport project. Therefore, this report does not require any special privileges to run.
 
 ## :package: Module Installation
 
@@ -143,15 +146,16 @@ The following provides information of how to configure each schema within the re
 ### Report
 The **Report** schema provides configuration of the System Resources report information.
 
-| Sub-Schema          | Setting      | Default                        | Description                                                  |
-|---------------------|--------------|--------------------------------|--------------------------------------------------------------|
+| Sub-Schema          | Setting      | Default                          | Description                                                  |
+| ------------------- | ------------ | -------------------------------- | ------------------------------------------------------------ |
 | Name                | User defined | System Resources As Built Report | The name of the As Built Report                              |
-| Version             | User defined | 1.0                            | The report version                                           |
-| Status              | User defined | Released                       | The report release status                                    |
-| ShowCoverPageImage  | true / false | true                           | Toggle to enable/disable the display of the cover page image |
-| ShowTableOfContents | true / false | true                           | Toggle to enable/disable table of contents                   |
-| ShowHeaderFooter    | true / false | true                           | Toggle to enable/disable document headers & footers          |
-| ShowTableCaptions   | true / false | true                           | Toggle to enable/disable table captions/numbering            |
+| Version             | User defined | 1.0                              | The report version                                           |
+| Status              | User defined | Released                         | The report release status                                    |
+| Language            | User defined | en-US                            | The language / locale of the report                          |
+| ShowCoverPageImage  | true / false | true                             | Toggle to enable/disable the display of the cover page image |
+| ShowTableOfContents | true / false | true                             | Toggle to enable/disable table of contents                   |
+| ShowHeaderFooter    | true / false | true                             | Toggle to enable/disable document headers & footers          |
+| ShowTableCaptions   | true / false | true                             | Toggle to enable/disable table captions/numbering            |
 
 ### Options
 The **Options** schema allows certain options within the report to be toggled on or off.
@@ -160,19 +164,46 @@ The **Options** schema allows certain options within the report to be toggled on
 ### InfoLevel
 The **InfoLevel** schema allows configuration of each section of the report at a granular level. The following sections can be set.
 
-There are 6 levels (0-5) of detail granularity for each section as follows;
+There are 3 levels (0-2) of detail granularity for each section as follows;
 
-| Setting | InfoLevel         | Description                                                                                                                                |
-|:-------:|-------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-|    0    | Disabled          | Does not collect or display any information                                                                                                |
-|    1    | Enabled / Summary | Provides summarised information for a collection of objects                                                                                |
-|    2    | Adv Summary       | Provides condensed, detailed information for a collection of objects                                                                       |
-|    3    | Detailed          | Provides detailed information for individual objects                                                                                       |
-|    4    | Adv Detailed      | Provides detailed information for individual objects, as well as information for associated objects                                        |
-|    5    | Comprehensive     | Provides comprehensive information for individual objects, such as advanced configuration settings                                         |
+| Setting | InfoLevel         | Description                                                          |
+| :-----: | ----------------- | -------------------------------------------------------------------- |
+|    0    | Disabled          | Does not collect or display any information                          |
+|    1    | Enabled / Summary | Provides summarised information for a collection of objects          |
+|    2    | Adv Summary       | Provides condensed, detailed information for a collection of objects |
+
+The table below outlines the default and maximum **InfoLevel** settings for each section.
+
+| Sub-Schema | Default Setting | Maximum Setting |
+| ---------- | :-------------: | :-------------: |
+| Date       |        1        |        2        |
+| TimeZone   |        2        |        2        |
+| Uptime     |        2        |        2        |
+| PSHost     |        2        |        2        |
+| Process    |        1        |        2        |
 
 ### Healthcheck
 The **Healthcheck** schema is used to toggle health checks on or off.
 
+No health checks are currently available for this report.
+
 ## :computer: Examples
-<!-- ********** Add some examples. Use other AsBuiltReport modules as a guide. ********** -->
+
+The following examples demonstrate how to generate a System Resources As Built Report.
+
+Below are a few examples of running the AsBuiltReport script. Refer to the `README.md` file in the main AsBuiltReport project repository for more examples.
+
+```powershell
+# Generate a System Resources As Built Report for 'localhost'. Export report to HTML & DOCX formats. Use default report style. Append timestamp to report filename. Save reports to 'C:\Users\Jon\Documents'
+PS C:\> New-AsBuiltReport -Report System.Resources -Target localhost -Username 'User' -Password 'P@ssw0rd' -Format Html,Word -OutputFolderPath 'C:\Users\Jon\Documents' -Timestamp
+
+# Generate a System Resources As Built Report for 'localhost' using specified credentials and report configuration file. Export report to Text, HTML & DOCX formats. Use default report style. Save reports to 'C:\Users\Jon\Documents'. Display verbose messages to the console.
+PS C:\> New-AsBuiltReport -Report System.Resources -Target localhost -Username 'User' -Password 'P@ssw0rd' -Format Text,Html,Word -OutputFolderPath 'C:\Users\Jon\Documents' -ReportConfigFilePath 'C:\Users\Jon\AsBuiltReport\AsBuiltReport.System.Resources.json' -Verbose
+
+# Generate a System Resources As Built Report for 'localhost' using stored credentials. Export report to HTML & Text formats. Use default report style. Highlight environment issues within the report. Save reports to 'C:\Users\Jon\Documents'.
+PS C:\> $Creds = Get-Credential
+PS C:\> New-AsBuiltReport -Report System.Resources -Target localhost -Credential $Creds -Format Html,Text -OutputFolderPath 'C:\Users\Jon\Documents' -EnableHealthCheck
+
+# Generate a System Resources As Built Report for Backup Server localhost using stored credentials. Export report to HTML & DOCX formats. Use default report style. Reports are saved to the user profile folder by default. Attach and send reports via e-mail.
+PS C:\> New-AsBuiltReport -Report System.Resources -Target localhost -Username 'User' -Password 'P@ssw0rd' -Format Html,Word -OutputFolderPath 'C:\Users\Jon\Documents' -SendEmail
+```
