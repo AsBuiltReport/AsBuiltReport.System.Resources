@@ -106,6 +106,9 @@ Local user privileges are required to run this report.
 ### PowerShell
 <!-- ********** Add installation for any additional PowerShell module(s) ********** -->
 ```powershell
+# Install AsBuiltReport.Core 1.5.0-RC1
+Install-Module AsBuiltReport.Core -Repository PSGallery -AllowPrerelease
+
 # Install
 install-module AsBuiltReport.System.Resources -Force
 
