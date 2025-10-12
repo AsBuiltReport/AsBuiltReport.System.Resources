@@ -16,7 +16,7 @@ jobs:
       - name: Install AsBuiltReport.Core module
         shell: pwsh
         run: |
-          Install-Module -Name AsBuiltReport.Core -Repository PSGallery -RequiredVersion 1.5.0 -AllowPrerelease -Force
+          Install-Module -Name AsBuiltReport.Core -Repository PSGallery -AllowPrerelease -Force
       - name: Test Module Manifest
         shell: pwsh
         run: |
