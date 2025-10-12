@@ -91,6 +91,9 @@ PowerShell 5.1 or PowerShell 7, and the following PowerShell modules are require
 
 - [AsBuiltReport.System.Resources Module](https://www.powershellgallery.com/packages/AsBuiltReport.System.Resources/)
 
+> [!IMPORTANT]
+> This report requires AsBuiltReport.Core version 1.5.0 or later to be installed. [Multilingual-support](https://www.asbuiltreport.com/blog/2025/09/05/Multilingual-support/)
+
 ### :closed_lock_with_key: Required Privileges
 
 Local user privileges are required to run this report.
