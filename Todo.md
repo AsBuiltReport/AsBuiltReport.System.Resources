@@ -1,0 +1,8 @@
+- [x] Update README.md with usage examples
+- [ ] Add HealthCheck support
+  - [ ] Test multi-language in HealthChecks
+- [ ] Add support for charts
+  - [ ] CPU usage charts
+  - [ ] Memory usage charts
+- [ ] Add support for diagrams
+  - [ ] Process diagrams
