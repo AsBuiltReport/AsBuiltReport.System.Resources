@@ -206,4 +206,7 @@ PS C:\> New-AsBuiltReport -Report System.Resources -Target localhost -Credential
 
 # Generate a System Resources As Built Report for Backup Server localhost using stored credentials. Export report to HTML & DOCX formats. Use default report style. Reports are saved to the user profile folder by default. Attach and send reports via e-mail.
 PS C:\> New-AsBuiltReport -Report System.Resources -Target localhost -Username 'User' -Password 'P@ssw0rd' -Format Html,Word -OutputFolderPath 'C:\Users\Jon\Documents' -SendEmail
+
+# Generate a System Resources As Built Report for 'localhost'. Export report to HTML & DOCX formats. Use default report style. Save reports to 'C:\Users\Jon\Documents' and set the report language to Spanish.
+PS C:\> New-AsBuiltReport -Report System.Resources -Target localhost -Username 'User' -Password 'P@ssw0rd' -Format Html,Word -OutputFolderPath 'C:\Users\Jon\Documents' -ReportLanguage es-ES
 ```
