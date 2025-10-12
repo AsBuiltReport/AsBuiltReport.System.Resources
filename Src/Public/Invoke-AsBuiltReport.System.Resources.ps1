@@ -15,8 +15,8 @@ function Invoke-AsBuiltReport.System.Resources {
         https://github.com/AsBuiltReport/AsBuiltReport.System.Resources
     #>
 
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "", Scope = "Script")]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "", Scope = "Script")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "", Scope = "function")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "", Scope = "function")]
 
 
     # Do not remove or add to these parameters
