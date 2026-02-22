@@ -11,9 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add initial support for diagrams using the Diagrammer module
   - Add Export-AbrDiagram function to handle diagram exports
-  - Generate a Process Hierarchy Diagram in Invoke-AsBuiltReport.System.Resources
+  - Generate a Process Hierarchy Diagram
 - Add initial support for charts
-    - Generate Memory Usage and CPU Usage charts in Invoke-AsBuiltReport.System.Resources
+    - Generate Memory Usage and CPU Usage charts
 
 ### Changed
 
