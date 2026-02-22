@@ -27,6 +27,16 @@
     Company = Şirket
     Product = Ürün
     Unknown = Bilinmiyor
+
+    Generating = İşlem Diyagramı Oluşturuluyor.
+    Label = İşlem Hiyerarşisi
+    MainDiagramLabel = İşlem Hiyerarşi Diyagramı
+    Unable = İşlem Hiyerarşi Diyagramı oluşturulamadı.
+    MEMUsage = Bellek Kullanımı
+    CPUUsage = CPU Kullanımı
+    Processes = İşlemler
+    MEMUsageChart = Bellek Kullanımı - Diyagram
+    CPUUsageChart = CPU Kullanımı - Diyagram
 '@
 
     # Get-AbrTimeZone

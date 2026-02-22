@@ -27,6 +27,16 @@
     Company = Azienda
     Product = Prodotto
     Unknown = Sconosciuto
+
+    Generating = Generazione del diagramma dei processi.
+    Label = Gerarchia dei processi
+    MainDiagramLabel = Diagramma della gerarchia dei processi
+    Unable = Impossibile generare il diagramma della gerarchia dei processi.
+    MEMUsage = Uso di Memoria
+    CPUUsage = Uso di CPU
+    Processes = Processi
+    MEMUsageChart = Uso di Memoria - Grafico
+    CPUUsageChart = Uso di CPU - Grafico
 '@
 
     # Get-AbrTimeZone

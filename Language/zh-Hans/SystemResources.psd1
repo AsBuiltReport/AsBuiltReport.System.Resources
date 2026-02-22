@@ -27,6 +27,16 @@
     Company = 公司
     Product = 产品
     Unknown = 未知
+
+    Generating = 正在生成进程图。
+    Label = 进程层次结构
+    MainDiagramLabel = 进程层次结构图
+    Unable = 无法生成进程层次结构图。
+    MEMUsage = 内存使用情况
+    CPUUsage = CPU 使用情况
+    Processes = 进程
+    MEMUsageChart = 内存使用情况 - 图表
+    CPUUsageChart = CPU 使用情况 - 图表
 '@
 
     # Get-AbrTimeZone

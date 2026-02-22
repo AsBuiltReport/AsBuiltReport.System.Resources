@@ -27,6 +27,16 @@
     Company = Công ty
     Product = Sản phẩm
     Unknown = Không rõ
+
+    Generating = Đang tạo sơ đồ tiến trình.
+    Label = Cấu trúc tiến trình
+    MainDiagramLabel = Sơ đồ cấu trúc tiến trình
+    Unable = Không thể tạo sơ đồ cấu trúc tiến trình.
+    MEMUsage = Sử dụng bộ nhớ
+    CPUUsage = Sử dụng CPU
+    Processes = Tiến trình
+    MEMUsageChart = Sử dụng bộ nhớ - Biểu đồ
+    CPUUsageChart = Sử dụng CPU - Biểu đồ
 '@
 
     # Get-AbrTimeZone

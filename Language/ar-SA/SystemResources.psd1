@@ -1,11 +1,5 @@
 # culture = 'ar-SA'
 @{
-    # Invoke-AsBuiltReport.System.Resources
-    InvokeAsBuiltReportSystemResources = ConvertFrom-StringData @'
-    MainDiagramLabel = مخطط تسلسل العمليات
-    Unable = غير قادر على إنشاء مخطط تسلسل العمليات.
-'@
-
     # Get-AbrDate
     GetAbrDate = ConvertFrom-StringData @'
     InfoLevel  = {0} تم تعيين InfoLevel على {1}.
@@ -32,6 +26,16 @@
     Company = الشركة
     Product = المنتج
     Unknown = غير معروف
+
+    Generating = توليد مخطط العمليات.
+    Label = تسلسل العمليات
+    MainDiagramLabel = مخطط تسلسل العمليات
+    Unable = غير قادر على توليد مخطط تسلسل العمليات.
+    MEMUsage = استخدام الذاكرة
+    CPUUsage = استخدام وحدة المعالجة المركزية
+    Processes = العمليات
+    MEMUsageChart = استخدام الذاكرة - مخطط
+    CPUUsageChart = استخدام وحدة المعالجة المركزية - مخطط
 '@
 
     # Get-AbrTimeZone
@@ -80,11 +84,5 @@
     Yes = نعم
     No = لا
     Unknown = غير معروف
-'@
-    # Get-AbrProcessDiagram
-    GetAbrProcessDiagram = ConvertFrom-StringData @'
-    InfoLevel = {0} تم تعيين InfoLevel على {1}.
-    Generating = جاري إنشاء مخطط تسلسل العمليات.
-    Label = مخطط تسلسل العمليات
 '@
 }

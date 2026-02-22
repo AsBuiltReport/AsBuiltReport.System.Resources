@@ -27,6 +27,16 @@
     Company = 公司
     Product = 產品
     Unknown = 未知
+
+    Generating = 正在生成進程圖。
+    Label = 進程層次結構
+    MainDiagramLabel = 進程層次結構圖
+    Unable = 無法生成進程層次結構圖。
+    MEMUsage = 記憶體使用情況
+    CPUUsage = CPU 使用情況
+    Processes = 處理程序
+    MEMUsageChart = 記憶體使用情況 - 圖表
+    CPUUsageChart = CPU 使用情況 - 圖表
 '@
 
     # Get-AbrTimeZone

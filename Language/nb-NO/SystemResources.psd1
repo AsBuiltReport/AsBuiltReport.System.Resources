@@ -27,6 +27,16 @@
     Company = Selskap
     Product = Produkt
     Unknown = Ukjent
+
+    Generating = Genererer prosessdiagram.
+    Label = Prosesshierarki
+    MainDiagramLabel = Prosesshierarkidiagram
+    Unable = Kan ikke generere prosesshierarkidiagrammet.
+    MEMUsage = Minnebruk
+    CPUUsage = CPU-bruk
+    Processes = Prosesser
+    MEMUsageChart = Minnebruk - Diagram
+    CPUUsageChart = CPU-bruk - Diagram
 '@
 
     # Get-AbrTimeZone

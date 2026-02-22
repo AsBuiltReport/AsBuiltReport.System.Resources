@@ -27,6 +27,16 @@
     Company = Företag
     Product = Produkt
     Unknown = Okänd
+
+    Generating = Genererar processdiagram.
+    Label = Processhierarki
+    MainDiagramLabel = Processhierarkidiagram
+    Unable = Kan inte generera processhierarkidiagrammet.
+    MEMUsage = Användning av minne
+    CPUUsage = Användning av CPU
+    Processes = Processer
+    MEMUsageChart = Användning av minne - Diagram
+    CPUUsageChart = Användning av CPU - Diagram
 '@
 
     # Get-AbrTimeZone
