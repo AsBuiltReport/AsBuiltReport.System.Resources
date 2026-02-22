@@ -106,9 +106,6 @@ Local user privileges are required to run this report.
 ### PowerShell
 <!-- ********** Add installation for any additional PowerShell module(s) ********** -->
 ```powershell
-# Install AsBuiltReport.Core 1.5.0-RC1
-Install-Module AsBuiltReport.Core -Repository PSGallery -AllowPrerelease
-
 # Install
 install-module AsBuiltReport.System.Resources -Force
 
@@ -166,7 +163,21 @@ The **Report** schema provides configuration of the System Resources report info
 ### Options
 The **Options** schema allows certain options within the report to be toggled on or off.
 
-<!-- ********** Add/Remove the number of InfoLevels as required ********** -->
+| Sub-Schema             | Setting      | Default | Description                                                                   |
+| ---------------------- | ------------ | ------- | ----------------------------------------------------------------------------- |
+| DiagramColumnSize      | int          | 3       | Set the diagram node table size                                               |
+| DiagramTheme           | string       | White   | Set the diagram theme (Black/White/Neon)                                      |
+| DiagramWaterMark       | string       | empty   | Set the diagram watermark                                                     |
+| DiagramType            | true / false | true    | Toggle to enable/disable the export of individual diagram diagrams            |
+| DisableDiagramMainLogo | true / false | false   | Toggle to enable/disable the main logo in diagrams                            |
+| EnableDiagrams         | true / false | false   | Toggle to enable/disable infrastructure diagrams                              |
+| EnableDiagramsDebug    | true / false | false   | Toggle to enable/disable diagram debug option                                 |
+| EnableDiagramSignature | true / false | false   | Toggle to enable/disable diagram signature (bottom right corner)              |
+| ExportDiagrams         | true / false | true    | Toggle to enable/disable diagram export option                                |
+| ExportDiagramsFormat   | string array | png     | Set the format used to export the infrastructure diagram (dot, png, pdf, svg) |
+| SignatureAuthorName    | string       | empty   | Set the signature author name                                                 |
+| SignatureCompanyName   | string       | empty   | Set the signature company name                                                |
+
 ### InfoLevel
 The **InfoLevel** schema allows configuration of each section of the report at a granular level. The following sections can be set.
 
