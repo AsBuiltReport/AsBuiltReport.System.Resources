@@ -27,6 +27,16 @@
     Company = 회사
     Product = 제품
     Unknown = 알 수 없음
+
+    Generating = 프로세스 다이어그램 생성 중.
+    Label = 프로세스 계층
+    MainDiagramLabel = 프로세스 계층 다이어그램
+    Unable = 프로세스 계층 다이어그램을 생성할 수 없습니다.
+    MEMUsage = 메모리 사용량
+    CPUUsage = CPU 사용량
+    Processes = 프로세스
+    MEMUsageChart = 메모리 사용량 - 차트
+    CPUUsageChart = CPU 사용량 - 차트
 '@
 
     # Get-AbrTimeZone

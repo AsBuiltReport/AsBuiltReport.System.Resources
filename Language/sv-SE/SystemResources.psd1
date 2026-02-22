@@ -17,7 +17,7 @@
     InfoLevel  = {0} InfoLevel inställd på {1}.
     Collecting  = Samlar information om systemprocesser.
     ParagraphDetail = Följande avsnitt beskriver systemprocesserna.
-    ParagraphSummary = Följande tabell sammanfattar de 10 viktigaste systemprocesserna. För mer detaljerad information, ställ in värdet InfoLevel.ProcessInfo till 2 i din rapportkonfigurationsfil. Sorterad efter CPU-användning.
+    ParagraphSummary = Följande tabell sammanfattar de 5 viktigaste systemprocesserna. För mer detaljerad information, ställ in värdet InfoLevel.ProcessInfo till 2 i din rapportkonfigurationsfil. Sorterad efter CPU-användning.
     Heading = Processer
 
     Name = Namn
@@ -27,6 +27,16 @@
     Company = Företag
     Product = Produkt
     Unknown = Okänd
+
+    Generating = Genererar processdiagram.
+    Label = Processhierarki
+    MainDiagramLabel = Processhierarkidiagram
+    Unable = Kan inte generera processhierarkidiagrammet.
+    MEMUsage = Användning av minne
+    CPUUsage = Användning av CPU
+    Processes = Processer
+    MEMUsageChart = Användning av minne - Diagram
+    CPUUsageChart = Användning av CPU - Diagram
 '@
 
     # Get-AbrTimeZone

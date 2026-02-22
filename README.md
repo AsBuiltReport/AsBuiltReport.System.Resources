@@ -31,14 +31,17 @@
 
 # System Resources As Built Report
 
-<!-- ********** REMOVE THIS MESSAGE WHEN THE MODULE IS FUNCTIONAL ********** -->
-## :exclamation: THIS ASBUILTREPORT MODULE IS CURRENTLY IN DEVELOPMENT AND MIGHT NOT YET BE FUNCTIONAL ❗
+> [!IMPORTANT]
+> The intention of this report is to ilustrate the capabilities of the AsBuiltReport project. This report is not intended to be used for production environments and should only be used for testing and demonstration purposes.
 
 System Resources As Built Report is a PowerShell module which works in conjunction with [AsBuiltReport.Core](https://github.com/AsBuiltReport/AsBuiltReport.Core).
 
 [AsBuiltReport](https://github.com/AsBuiltReport/AsBuiltReport) is an open-sourced community project which utilises PowerShell to produce as-built documentation in multiple document formats for multiple vendors and technologies.
 
 Please refer to the AsBuiltReport [website](https://www.asbuiltreport.com) for more detailed information about this project.
+
+## :books: Sample Reports
+Sample System Resources As Built report HTML file: [Sample System Resources As-Built Report.html](https://htmlpreview.github.io/?https://raw.githubusercontent.com/AsBuiltReport/AsBuiltReport.System.Resources/dev/Samples/System%20Resources%20As%20Built%20Report.html)
 
 # :beginner: Getting Started
 Below are the instructions on how to install, configure and generate a System Resources As Built report.
@@ -97,9 +100,6 @@ PowerShell 5.1 or PowerShell 7, and the following PowerShell modules are require
 ### :closed_lock_with_key: Required Privileges
 
 Local user privileges are required to run this report.
-
-> [!IMPORTANT]
-> The intention of this report is to demonstrate the multi-language capabilities of the AsBuiltReport project. Therefore, this report does not require any special privileges to run.
 
 ## :package: Module Installation
 
@@ -163,7 +163,21 @@ The **Report** schema provides configuration of the System Resources report info
 ### Options
 The **Options** schema allows certain options within the report to be toggled on or off.
 
-<!-- ********** Add/Remove the number of InfoLevels as required ********** -->
+| Sub-Schema             | Setting      | Default | Description                                                                   |
+| ---------------------- | ------------ | ------- | ----------------------------------------------------------------------------- |
+| DiagramColumnSize      | int          | 3       | Set the diagram node table size                                               |
+| DiagramTheme           | string       | White   | Set the diagram theme (Black/White/Neon)                                      |
+| DiagramWaterMark       | string       | empty   | Set the diagram watermark                                                     |
+| DiagramType            | true / false | true    | Toggle to enable/disable the export of individual diagram diagrams            |
+| DisableDiagramMainLogo | true / false | false   | Toggle to enable/disable the main logo in diagrams                            |
+| EnableDiagrams         | true / false | false   | Toggle to enable/disable infrastructure diagrams                              |
+| EnableDiagramsDebug    | true / false | false   | Toggle to enable/disable diagram debug option                                 |
+| EnableDiagramSignature | true / false | false   | Toggle to enable/disable diagram signature (bottom right corner)              |
+| ExportDiagrams         | true / false | true    | Toggle to enable/disable diagram export option                                |
+| ExportDiagramsFormat   | string array | png     | Set the format used to export the infrastructure diagram (dot, png, pdf, svg) |
+| SignatureAuthorName    | string       | empty   | Set the signature author name                                                 |
+| SignatureCompanyName   | string       | empty   | Set the signature company name                                                |
+
 ### InfoLevel
 The **InfoLevel** schema allows configuration of each section of the report at a granular level. The following sections can be set.
 

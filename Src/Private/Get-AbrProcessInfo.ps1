@@ -6,7 +6,7 @@ function Get-AbrProcessInfo {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.1.1
+        Version:        0.1.2
         Author:         AsBuiltReport Community
         Twitter:        @AsBuiltReport
         Github:         AsBuiltReport
@@ -27,14 +27,14 @@ function Get-AbrProcessInfo {
     process {
         try {
             if ($InfoLevel.ProcessInfo -gt 0) {
-                $SystemProcess = Get-Process | Sort-Object -Property CPU -Descending | Select-Object -First 10
+                $SystemProcess = Get-Process | Sort-Object -Property CPU -Descending | Select-Object -First 5
                 if ($SystemProcess) {
                     Write-PScriboMessage $reportTranslate.Collecting
                     Section -Style Heading2 $($reportTranslate.Heading) {
                         $SystemProcessInfo = @()
                         foreach ($Process in $SystemProcess) {
                             $InObj = [Ordered]@{
-                                $($reportTranslate.Name) = $Process.ProcessName
+                                $($reportTranslate.Name) = $Process.ProcessName.Split(' ')[0]
                                 $($reportTranslate.Id) = $Process.Id
                                 $($reportTranslate.CPU) = & { try { [math]::Round($Process.CPU, 0) } catch { '--' } }
                                 $($reportTranslate.Memory) = & { try { [math]::Round($Process.WorkingSet / 1MB, 0) } catch { '--' } }
@@ -80,6 +80,36 @@ function Get-AbrProcessInfo {
                                 $TableParams['Caption'] = "- $($TableParams.Name)"
                             }
                             $SystemProcessInfo | Table @TableParams
+                        }
+                        try {
+                            $Chart = New-BarChart -Values $SystemProcessInfo.$($reportTranslate.CPU) -Labels $SystemProcessInfo.$($reportTranslate.Name) -Title $reportTranslate.CPUUsage -EnableLegend -LegendOrientation Horizontal -LegendAlignment UpperCenter -Width 600 -Height 600 -Format base64 -LabelYAxis $($reportTranslate.CPU) -LabelXAxis $($reportTranslate.Processes) -TitleFontSize 20 -TitleFontBold -AreaOrientation Vertical -EnableCustomColorPalette -CustomColorPalette @('#395879', '#59779a', '#7b98bc', '#9dbae0', '#c0ddff') -AxesMarginsTop 0.5
+                            if ($Chart) {
+                                Section -Style Heading3 $reportTranslate.CPUUsageChart {
+                                    Image -Text $reportTranslate.CPUUsageChart -Align 'Center' -Percent 70 -Base64 $Chart
+                                }
+                            }
+                        } catch {
+                            Write-PScriboMessage -IsWarning $_.Exception.Message
+                        }
+                        try {
+                            $Chart = New-BarChart -Values $SystemProcessInfo.$($reportTranslate.Memory) -Labels $SystemProcessInfo.$($reportTranslate.Name) -Title $reportTranslate.MEMUsage -EnableLegend -LegendOrientation Horizontal -LegendAlignment UpperCenter -Width 600 -Height 600 -Format base64 -LabelYAxis $($reportTranslate.Memory) -LabelXAxis $($reportTranslate.Processes) -TitleFontSize 20 -TitleFontBold -AreaOrientation Vertical -EnableCustomColorPalette -CustomColorPalette @('#395879', '#59779a', '#7b98bc', '#9dbae0', '#c0ddff') -AxesMarginsTop 0.5
+                            if ($Chart) {
+                                Section -Style Heading3 $reportTranslate.MEMUsageChart {
+                                    Image -Text $reportTranslate.MEMUsageChart -Align 'Center' -Percent 70 -Base64 $Chart
+                                }
+                            }
+                        } catch {
+                            Write-PScriboMessage -IsWarning $_.Exception.Message
+                        }
+                        try {
+                            $ProcessDiagram = Get-AbrProcessDiagram
+                            if ($ProcessDiagram) {
+                                Export-AbrDiagram -DiagramObject $ProcessDiagram -MainDiagramLabel $reportTranslate.MainDiagramLabel -FileName 'AsBuiltReport.System.Resources.Cluster'
+                            } else {
+                                Write-PScriboMessage -IsWarning $reportTranslate.Unable
+                            }
+                        } catch {
+                            Write-PScriboMessage -IsWarning $($_.Exception.Message)
                         }
                     }
                 }

@@ -17,7 +17,7 @@
     InfoLevel  = {0} InfoLevel ustawiony na {1}.
     Collecting  = Zbieranie informacji o procesach systemowych.
     ParagraphDetail = Poniższe sekcje szczegółowo opisują procesy systemowe.
-    ParagraphSummary = Poniższa tabela podsumowuje 10 najważniejszych procesów systemowych. Aby uzyskać bardziej szczegółowe informacje, ustaw wartość InfoLevel.ProcessInfo na 2 w pliku konfiguracji raportu. Posortowane według użycia CPU.
+    ParagraphSummary = Poniższa tabela podsumowuje 5 najważniejszych procesów systemowych. Aby uzyskać bardziej szczegółowe informacje, ustaw wartość InfoLevel.ProcessInfo na 2 w pliku konfiguracji raportu. Posortowane według użycia CPU.
     Heading = Procesy
 
     Name = Nazwa
@@ -27,6 +27,16 @@
     Company = Firma
     Product = Produkt
     Unknown = Nieznany
+
+    Generating = Generowanie diagramu procesów.
+    Label = Hierarchia procesów
+    MainDiagramLabel = Diagram hierarchii procesów
+    Unable = Nie można wygenerować diagramu hierarchii procesów.
+    MEMUsage = Użycie pamięci
+    CPUUsage = Użycie CPU
+    Processes = Procesy
+    MEMUsageChart = Wykres użycia pamięci
+    CPUUsageChart = Wykres użycia CPU
 '@
 
     # Get-AbrTimeZone

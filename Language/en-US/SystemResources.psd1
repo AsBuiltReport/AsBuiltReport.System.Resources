@@ -1,6 +1,5 @@
 # culture = 'en-US'
 @{
-
     # Get-AbrDate
     GetAbrDate = ConvertFrom-StringData @'
     InfoLevel  = {0} InfoLevel set at {1}.
@@ -17,7 +16,7 @@
     InfoLevel  = {0} InfoLevel set at {1}.
     Collecting  = Collecting System Process information.
     ParagraphDetail = The following sections detail the system process.
-    ParagraphSummary = The following table summarises the top 10 system process. For more detailed information, please set the InfoLevel.ProcessInfo value to 2 in your report configuration file. Sorted by CPU usage.
+    ParagraphSummary = The following table summarises the top 5 system process. For more detailed information, please set the InfoLevel.ProcessInfo value to 2 in your report configuration file. Sorted by CPU usage.
     Heading = Process
 
     Name = Name
@@ -27,6 +26,16 @@
     Company = Company
     Product = Product
     Unknown = Unknown
+
+    Generating = Generating Process Diagram.
+    Label = Process Hierarchy
+    MainDiagramLabel = Process Hierarchy Diagram
+    Unable = Unable to generate the Process Hierarchy Diagram.
+    MEMUsage = Memory Usage
+    CPUUsage = CPU Usage
+    Processes = Processes
+    MEMUsageChart = Memory Usage - Chart
+    CPUUsageChart = CPU Usage - Chart
 '@
 
     # Get-AbrTimeZone

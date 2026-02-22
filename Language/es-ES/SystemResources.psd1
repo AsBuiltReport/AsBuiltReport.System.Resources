@@ -1,6 +1,5 @@
 # culture = 'es-ES'
 @{
-
     # Get-AbrDate
     GetAbrDate = ConvertFrom-StringData @'
     InfoLevel  = {0} InfoLevel configurado en {1}.
@@ -17,7 +16,7 @@
     InfoLevel  = {0} InfoLevel configurado en {1}.
     Collecting  = Recopilando información del proceso del sistema.
     ParagraphDetail = Las siguientes secciones detallan el proceso del sistema.
-    ParagraphSummary = La siguiente tabla resume los 10 principales procesos del sistema. Para obtener información más detallada, establezca el valor de InfoLevel.ProcessInfo en 2 en su archivo de configuración del informe. Ordenado por uso de CPU.
+    ParagraphSummary = La siguiente tabla resume los 5 principales procesos del sistema. Para obtener información más detallada, establezca el valor de InfoLevel.ProcessInfo en 2 en su archivo de configuración del informe. Ordenado por uso de CPU.
     Heading = Procesos
 
     Name = Nombre
@@ -27,6 +26,16 @@
     Company = Compañía
     Product = Producto
     Unknown = Desconocido
+
+    Generating = Generando Diagrama de Procesos.
+    Label = Jerarquía de Procesos
+    MainDiagramLabel = Diagrama de Jerarquía de Procesos
+    Unable = No se puede generar el Diagrama de Jerarquía de Procesos.
+    MEMUsage = Uso de Memoria
+    CPUUsage = Uso de CPU
+    Processes = Procesos
+    MEMUsageChart = Uso de Memoria - Gráfico
+    CPUUsageChart = Uso de CPU - Gráfico
 '@
 
     # Get-AbrTimeZone

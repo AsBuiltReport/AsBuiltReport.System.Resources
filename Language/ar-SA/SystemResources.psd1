@@ -1,6 +1,5 @@
 # culture = 'ar-SA'
 @{
-
     # Get-AbrDate
     GetAbrDate = ConvertFrom-StringData @'
     InfoLevel  = {0} تم تعيين InfoLevel على {1}.
@@ -17,7 +16,7 @@
     InfoLevel  = {0} تم تعيين InfoLevel على {1}.
     Collecting  = جمع معلومات عمليات النظام.
     ParagraphDetail = تفصل الأقسام التالية عمليات النظام.
-    ParagraphSummary = يلخص الجدول التالي أهم 10 عمليات للنظام. لمزيد من المعلومات التفصيلية، يرجى تعيين قيمة InfoLevel.ProcessInfo على 2 في ملف تكوين التقرير الخاص بك. مرتبة حسب استخدام CPU.
+    ParagraphSummary = يلخص الجدول التالي أهم 5 عمليات للنظام. لمزيد من المعلومات التفصيلية، يرجى تعيين قيمة InfoLevel.ProcessInfo على 2 في ملف تكوين التقرير الخاص بك. مرتبة حسب استخدام CPU.
     Heading = العمليات
 
     Name = الاسم
@@ -27,6 +26,16 @@
     Company = الشركة
     Product = المنتج
     Unknown = غير معروف
+
+    Generating = توليد مخطط العمليات.
+    Label = تسلسل العمليات
+    MainDiagramLabel = مخطط تسلسل العمليات
+    Unable = غير قادر على توليد مخطط تسلسل العمليات.
+    MEMUsage = استخدام الذاكرة
+    CPUUsage = استخدام وحدة المعالجة المركزية
+    Processes = العمليات
+    MEMUsageChart = استخدام الذاكرة - مخطط
+    CPUUsageChart = استخدام وحدة المعالجة المركزية - مخطط
 '@
 
     # Get-AbrTimeZone

@@ -17,7 +17,7 @@
     InfoLevel  = {0} InfoLevel défini à {1}.
     Collecting  = Collecte des informations sur les processus système.
     ParagraphDetail = Les sections suivantes détaillent les processus système.
-    ParagraphSummary = Le tableau suivant résume les 10 principaux processus système. Pour plus d'informations, veuillez définir la valeur InfoLevel.ProcessInfo à 2 dans votre fichier de configuration du rapport. Trié par utilisation CPU.
+    ParagraphSummary = Le tableau suivant résume les 5 principaux processus système. Pour plus d'informations, veuillez définir la valeur InfoLevel.ProcessInfo à 2 dans votre fichier de configuration du rapport. Trié par utilisation CPU.
     Heading = Processus
 
     Name = Nom
@@ -27,6 +27,16 @@
     Company = Société
     Product = Produit
     Unknown = Inconnu
+
+    Generating = Génération du diagramme des processus.
+    Label = Hiérarchie des processus
+    MainDiagramLabel = Diagramme de la hiérarchie des processus
+    Unable = Impossible de générer le diagramme de la hiérarchie des processus.
+    MEMUsage = Utilisation de la mémoire
+    CPUUsage = Utilisation du CPU
+    Processes = Processus
+    MEMUsageChart = Utilisation de la mémoire - Diagramme
+    CPUUsageChart = Utilisation du CPU - Diagramme
 '@
 
     # Get-AbrTimeZone

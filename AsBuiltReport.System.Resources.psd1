@@ -12,7 +12,7 @@
     RootModule = 'AsBuiltReport.System.Resources.psm1'
 
     # Version number of this module.
-    ModuleVersion = '0.1.1'
+    ModuleVersion = '0.1.2'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -27,7 +27,7 @@
     # CompanyName = 'Unknown'
 
     # Copyright statement for this module
-    Copyright = '(c) 2025 AsBuiltReport. All rights reserved.'
+    Copyright = '(c) 2026 AsBuiltReport. All rights reserved.'
 
     # Description of the functionality provided by this module
     Description = 'A PowerShell module to generate an as built report on the configuration of System Resources.'
@@ -55,7 +55,15 @@
     RequiredModules = @(
         @{
             ModuleName = 'AsBuiltReport.Core';
-            ModuleVersion = '1.4.3'
+            ModuleVersion = '1.6.2'
+        },
+        @{
+            ModuleName = 'AsBuiltReport.Chart';
+            ModuleVersion = '0.2.0'
+        },
+        @{
+            ModuleName = 'Diagrammer.Core';
+            ModuleVersion = '0.2.38'
         }
     )
 

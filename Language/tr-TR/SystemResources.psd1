@@ -17,7 +17,7 @@
     InfoLevel  = {0} InfoLevel {1} olarak ayarlandı.
     Collecting  = Sistem işlem bilgileri toplanıyor.
     ParagraphDetail = Aşağıdaki bölümler sistem işlemlerini detaylandırır.
-    ParagraphSummary = Aşağıdaki tablo en iyi 10 sistem işlemini özetler. Daha ayrıntılı bilgi için, rapor yapılandırma dosyanızda InfoLevel.ProcessInfo değerini 2 olarak ayarlayın. CPU kullanımına göre sıralanmıştır.
+    ParagraphSummary = Aşağıdaki tablo en iyi 5 sistem işlemini özetler. Daha ayrıntılı bilgi için, rapor yapılandırma dosyanızda InfoLevel.ProcessInfo değerini 2 olarak ayarlayın. CPU kullanımına göre sıralanmıştır.
     Heading = İşlemler
 
     Name = Ad
@@ -27,6 +27,16 @@
     Company = Şirket
     Product = Ürün
     Unknown = Bilinmiyor
+
+    Generating = İşlem Diyagramı Oluşturuluyor.
+    Label = İşlem Hiyerarşisi
+    MainDiagramLabel = İşlem Hiyerarşi Diyagramı
+    Unable = İşlem Hiyerarşi Diyagramı oluşturulamadı.
+    MEMUsage = Bellek Kullanımı
+    CPUUsage = CPU Kullanımı
+    Processes = İşlemler
+    MEMUsageChart = Bellek Kullanımı - Diyagram
+    CPUUsageChart = CPU Kullanımı - Diyagram
 '@
 
     # Get-AbrTimeZone

@@ -1,6 +1,10 @@
 # culture = 'fi-FI'
 @{
-
+    # Invoke-AsBuiltReport.System.Resources
+    InvokeAsBuiltReportSystemResources = ConvertFrom-StringData @'
+    MainDiagramLabel = Prosessihierarkia Kaavio
+    Unable = Prosessihierarkia Kaaviota ei voida luoda.
+'@
     # Get-AbrDate
     GetAbrDate = ConvertFrom-StringData @'
     InfoLevel  = {0} InfoLevel asetettu arvoon {1}.
@@ -17,7 +21,7 @@
     InfoLevel  = {0} InfoLevel asetettu arvoon {1}.
     Collecting  = Kerätään järjestelmän prosessitietoja.
     ParagraphDetail = Seuraavissa osioissa kuvataan järjestelmän prosessit.
-    ParagraphSummary = Seuraava taulukko tiivistää 10 tärkeintä järjestelmäprosessia. Tarkempia tietoja varten aseta InfoLevel.ProcessInfo-arvo arvoksi 2 raportin asetustiedostossa. Lajiteltu CPU-käytön mukaan.
+    ParagraphSummary = Seuraava taulukko tiivistää 5 tärkeintä järjestelmäprosessia. Tarkempia tietoja varten aseta InfoLevel.ProcessInfo-arvo arvoksi 2 raportin asetustiedostossa. Lajiteltu CPU-käytön mukaan.
     Heading = Prosessit
 
     Name = Nimi
@@ -27,6 +31,16 @@
     Company = Yritys
     Product = Tuote
     Unknown = Tuntematon
+
+    Generating = Luodaan prosessikaaviota.
+    Label = Prosessihierarkia
+    MainDiagramLabel = Prosessihierarkia Kaavio
+    Unable = Prosessihierarkia Kaaviota ei voida luoda.
+    MEMUsage = Muistin käyttö
+    CPUUsage = CPU:n käyttö
+    Processes = Prosessit
+    MEMUsageChart = Muistin käyttö - Kaavio
+    CPUUsageChart = CPU:n käyttö - Kaavio
 '@
 
     # Get-AbrTimeZone
@@ -75,5 +89,11 @@
     Yes = Kyllä
     No = Ei
     Unknown = Tuntematon
+'@
+    # Get-AbrProcessDiagram
+    GetAbrProcessDiagram = ConvertFrom-StringData @'
+    InfoLevel = {0} InfoLevel asetettu arvoon {1}.
+    Generating = Luodaan prosessikaaviota.
+    Label = Prosessihierarkia
 '@
 }

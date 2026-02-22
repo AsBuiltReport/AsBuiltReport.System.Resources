@@ -17,7 +17,7 @@
     InfoLevel  = {0} InfoLevel beállítva: {1}.
     Collecting  = Rendszer folyamat információk gyűjtése.
     ParagraphDetail = Az alábbi szakaszok részletezik a rendszer folyamatokat.
-    ParagraphSummary = Az alábbi táblázat összefoglalja a top 10 rendszer folyamatot. Részletesebb információkért állítsa az InfoLevel.ProcessInfo értéket 2-re a jelentés konfigurációs fájlban. CPU használat szerint rendezve.
+    ParagraphSummary = Az alábbi táblázat összefoglalja a top 5 rendszer folyamatot. Részletesebb információkért állítsa az InfoLevel.ProcessInfo értéket 2-re a jelentés konfigurációs fájlban. CPU használat szerint rendezve.
     Heading = Folyamatok
 
     Name = Név
@@ -27,6 +27,16 @@
     Company = Cég
     Product = Termék
     Unknown = Ismeretlen
+
+    Generating = Folyamatdiagram generálása.
+    Label = Folyamat hierarchia
+    MainDiagramLabel = Folyamat hierarchia diagram
+    Unable = Nem lehet generálni a folyamat hierarchia diagramot.
+    MEMUsage = Memória használat
+    CPUUsage = CPU használat
+    Processes = Folyamatok
+    MEMUsageChart = Memória használat - Diagram
+    CPUUsageChart = CPU használat - Diagram
 '@
 
     # Get-AbrTimeZone

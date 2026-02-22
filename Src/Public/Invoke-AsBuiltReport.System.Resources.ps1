@@ -5,7 +5,7 @@ function Invoke-AsBuiltReport.System.Resources {
     .DESCRIPTION
         Documents the configuration of System Resources in Word/HTML/Text formats using PScribo.
     .NOTES
-        Version:        0.1.1
+        Version:        0.1.2
         Author:         AsBuiltReport Community
         Twitter:        @AsBuiltReport
         Github:         AsBuiltReport
@@ -15,8 +15,8 @@ function Invoke-AsBuiltReport.System.Resources {
         https://github.com/AsBuiltReport/AsBuiltReport.System.Resources
     #>
 
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSAvoidUsingWriteHost", "", Scope = "function")]
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "", Scope = "function")]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingWriteHost', '', Scope = 'function')]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '', Scope = 'function')]
 
 
     # Do not remove or add to these parameters
@@ -36,7 +36,13 @@ function Invoke-AsBuiltReport.System.Resources {
     # Used to set values to TitleCase where required
     $TextInfo = (Get-Culture).TextInfo
 
-    # Update/rename the $System variable and build out your code within the ForEach loop. The ForEach loop enables AsBuiltReport to generate an as built configuration against multiple defined targets.
+    # Used to set diagrams icon images
+    $script:Images = @{
+        'AsBuiltReport_LOGO' = 'AsBuiltReport_Logo.png'
+        'AsBuiltReport_Signature' = 'AsBuiltReport_Signature.png'
+        'Abr_LOGO_Footer' = 'AsBuiltReport.png'
+        'Process' = 'Process.png'
+    }
 
     #region foreach loop
     foreach ($System in $Target) {
@@ -47,7 +53,6 @@ function Invoke-AsBuiltReport.System.Resources {
             Get-AbrPSHost
             Get-AbrProcessInfo
         }
-
     }
     #endregion foreach loop
 }

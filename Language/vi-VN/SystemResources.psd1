@@ -17,7 +17,7 @@
     InfoLevel  = {0} InfoLevel được đặt ở {1}.
     Collecting  = Đang thu thập thông tin tiến trình hệ thống.
     ParagraphDetail = Các phần sau mô tả chi tiết các tiến trình hệ thống.
-    ParagraphSummary = Bảng sau tóm tắt 10 tiến trình hệ thống hàng đầu. Để biết thông tin chi tiết hơn, vui lòng đặt giá trị InfoLevel.ProcessInfo thành 2 trong tệp cấu hình báo cáo của bạn. Được sắp xếp theo mức sử dụng CPU.
+    ParagraphSummary = Bảng sau tóm tắt 5 tiến trình hệ thống hàng đầu. Để biết thông tin chi tiết hơn, vui lòng đặt giá trị InfoLevel.ProcessInfo thành 2 trong tệp cấu hình báo cáo của bạn. Được sắp xếp theo mức sử dụng CPU.
     Heading = Tiến trình
 
     Name = Tên
@@ -27,6 +27,16 @@
     Company = Công ty
     Product = Sản phẩm
     Unknown = Không rõ
+
+    Generating = Đang tạo sơ đồ tiến trình.
+    Label = Cấu trúc tiến trình
+    MainDiagramLabel = Sơ đồ cấu trúc tiến trình
+    Unable = Không thể tạo sơ đồ cấu trúc tiến trình.
+    MEMUsage = Sử dụng bộ nhớ
+    CPUUsage = Sử dụng CPU
+    Processes = Tiến trình
+    MEMUsageChart = Sử dụng bộ nhớ - Biểu đồ
+    CPUUsageChart = Sử dụng CPU - Biểu đồ
 '@
 
     # Get-AbrTimeZone

@@ -1,6 +1,5 @@
 # culture = 'de-DE'
 @{
-
     # Get-AbrDate
     GetAbrDate = ConvertFrom-StringData @'
     InfoLevel  = {0} InfoLevel auf {1} gesetzt.
@@ -17,7 +16,7 @@
     InfoLevel  = {0} InfoLevel auf {1} gesetzt.
     Collecting  = Sammeln von Systemprozessinformationen.
     ParagraphDetail = Die folgenden Abschnitte beschreiben die Systemprozesse.
-    ParagraphSummary = Die folgende Tabelle fasst die Top 10 Systemprozesse zusammen. Für detailliertere Informationen setzen Sie bitte den Wert InfoLevel.ProcessInfo in Ihrer Berichtskonfigurationsdatei auf 2. Sortiert nach CPU-Auslastung.
+    ParagraphSummary = Die folgende Tabelle fasst die Top 5 Systemprozesse zusammen. Für detailliertere Informationen setzen Sie bitte den Wert InfoLevel.ProcessInfo in Ihrer Berichtskonfigurationsdatei auf 2. Sortiert nach CPU-Auslastung.
     Heading = Prozesse
 
     Name = Name
@@ -27,6 +26,16 @@
     Company = Unternehmen
     Product = Produkt
     Unknown = Unbekannt
+
+    Generating = Generieren des Prozessdiagramms.
+    Label = Prozesshierarchie
+    MainDiagramLabel = Prozesshierarchiediagramm
+    Unable = Unfähig, das Prozesshierarchiediagramm zu generieren.
+    MEMUsage = Speichernutzung
+    CPUUsage = CPU-Auslastung
+    Processes = Prozesse
+    MEMUsageChart = Speichernutzung - Diagramm
+    CPUUsageChart = CPU-Auslastung - Diagramm
 '@
 
     # Get-AbrTimeZone
