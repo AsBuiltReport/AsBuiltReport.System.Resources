@@ -6,7 +6,7 @@ function Get-AbrProcessInfo {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.1.1
+        Version:        0.1.2
         Author:         AsBuiltReport Community
         Twitter:        @AsBuiltReport
         Github:         AsBuiltReport

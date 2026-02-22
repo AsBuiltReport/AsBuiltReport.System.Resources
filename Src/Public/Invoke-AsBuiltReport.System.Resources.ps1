@@ -41,6 +41,7 @@ function Invoke-AsBuiltReport.System.Resources {
         'AsBuiltReport_LOGO' = 'AsBuiltReport_Logo.png'
         'AsBuiltReport_Signature' = 'AsBuiltReport_Signature.png'
         'Abr_LOGO_Footer' = 'AsBuiltReport.png'
+        'Process' = 'Process.png'
     }
 
     #region foreach loop
@@ -52,7 +53,6 @@ function Invoke-AsBuiltReport.System.Resources {
             Get-AbrPSHost
             Get-AbrProcessInfo
         }
-
     }
     #endregion foreach loop
 }

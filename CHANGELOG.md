@@ -22,6 +22,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Diagrammer.Core minimum version increased to 0.2.38
     - AsBuiltReport.Chart minimum version increased to 0.2.0
 
+### Fixed
+
+- Fix process name display in Process section and diagram by removing extra information from the process name.
+
 ## [0.1.1] - 2025-10-11
 
 ### Added

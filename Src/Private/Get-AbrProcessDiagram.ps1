@@ -50,12 +50,12 @@ function Get-AbrProcessDiagram {
 
     process {
         try {
-            $Process = Get-Process | Sort-Object -Property CPU -Descending | Select-Object -Property @{Name = 'Name'; Expression = { "$($_.Name.Split(' ')[0]) (Id=$($_.Id))" } } -First 5
-            SubGraph ProcessH -Attributes @{Label = $($reportTranslate.Label); fontsize = 22; penwidth = 1.5; labelloc = 't'; style = 'dashed,rounded'; color = 'gray' } {
-                Node 'System' -NodeScript { $_ } -Attributes @{shape = 'rectangle'; style = 'filled'; fillcolor = '#EDEDED'; color = '#71797E'; fontcolor = $Fontcolor; penwidth = 1.5; }
-                Node $Process.Name -NodeScript { $_ } -Attributes @{shape = 'rectangle'; style = 'filled'; fillcolor = '#EDEDED'; color = '#71797E'; fontcolor = $Fontcolor; penwidth = 1.5; }
-                Edge -From 'System' -To $Process.Name -Attributes @{color = $Edgecolor; style = 'dashed'; penwidth = 1.5; }
+            $Process = Get-Process | Sort-Object -Property CPU -Descending | Select-Object -Property @{Name = 'Name'; Expression = { "$($_.Name.Split(' ')[0]) (Id=$($_.Id))" } }, @{Name = 'CPU'; Expression = { try { [math]::Round($_.CPU, 0) } catch { '--' } } }, @{Name = 'MEM'; Expression = { try { [math]::Round($_.WorkingSet / 1MB, 0) } catch { '--' } } } -First 5
+            SubGraph ProcessH -Attributes @{Label = $($reportTranslate.Label); fontsize = 28; fontcolor = $Fontcolor; penwidth = 1.5; labelloc = 't'; style = 'dashed,rounded'; color = 'gray' } {
 
+                Add-DiaNodeIcon -Name 'System' -IconDebug $IconDebug -IconType 'Process' -ImagesObj $Images -NodeObject
+                $Process | ForEach-Object { Add-DiaNodeIcon -Name $_.Name -IconDebug $IconDebug -IconType 'Process' -ImagesObj $Images -NodeObject -AditionalInfo @{'CPU Usage' = $_.CPU; 'Memory Usage' = $_.MEM} }
+                Edge -From 'System' -To $Process.Name -Attributes @{color = $Edgecolor; style = 'dashed'; penwidth = 1.5; }
             }
 
         } catch {
