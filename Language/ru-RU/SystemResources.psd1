@@ -27,6 +27,16 @@
     Company = Компания
     Product = Продукт
     Unknown = Неизвестно
+
+    Generating = Генерация диаграммы процессов.
+    Label = Иерархия процессов
+    MainDiagramLabel = Диаграмма иерархии процессов
+    Unable = Не удалось сгенерировать диаграмму иерархии процессов.
+    MEMUsage = Использование памяти
+    CPUUsage = Использование CPU
+    Processes = Процессы
+    MEMUsageChart = Использование памяти - Диаграмма
+    CPUUsageChart = Использование CPU - Диаграмма
 '@
 
     # Get-AbrTimeZone

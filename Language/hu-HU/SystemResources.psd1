@@ -27,6 +27,16 @@
     Company = Cég
     Product = Termék
     Unknown = Ismeretlen
+
+    Generating = Folyamatdiagram generálása.
+    Label = Folyamat hierarchia
+    MainDiagramLabel = Folyamat hierarchia diagram
+    Unable = Nem lehet generálni a folyamat hierarchia diagramot.
+    MEMUsage = Memória használat
+    CPUUsage = CPU használat
+    Processes = Folyamatok
+    MEMUsageChart = Memória használat - Diagram
+    CPUUsageChart = CPU használat - Diagram
 '@
 
     # Get-AbrTimeZone

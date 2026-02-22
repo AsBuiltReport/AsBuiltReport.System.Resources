@@ -81,6 +81,36 @@ function Get-AbrProcessInfo {
                             }
                             $SystemProcessInfo | Table @TableParams
                         }
+                        try {
+                            $Chart = New-BarChart -Values $SystemProcessInfo.$($reportTranslate.CPU) -Labels $SystemProcessInfo.$($reportTranslate.Name) -Title $reportTranslate.CPUUsage -EnableLegend -LegendOrientation Horizontal -LegendAlignment UpperCenter -Width 600 -Height 600 -Format base64 -LabelYAxis $($reportTranslate.CPU) -LabelXAxis $($reportTranslate.Processes) -TitleFontSize 20 -TitleFontBold -AreaOrientation Vertical -EnableCustomColorPalette -CustomColorPalette @('#395879', '#59779a', '#7b98bc', '#9dbae0', '#c0ddff') -AxesMarginsTop 0.5
+                            if ($Chart) {
+                                Section -Style Heading3 $reportTranslate.CPUUsageChart {
+                                    Image -Text $reportTranslate.CPUUsageChart -Align 'Center' -Percent 70 -Base64 $Chart
+                                }
+                            }
+                        } catch {
+                            Write-PScriboMessage -IsWarning $_.Exception.Message
+                        }
+                        try {
+                            $Chart = New-BarChart -Values $SystemProcessInfo.$($reportTranslate.Memory) -Labels $SystemProcessInfo.$($reportTranslate.Name) -Title $reportTranslate.MEMUsage -EnableLegend -LegendOrientation Horizontal -LegendAlignment UpperCenter -Width 600 -Height 600 -Format base64 -LabelYAxis $($reportTranslate.Memory) -LabelXAxis $($reportTranslate.Processes) -TitleFontSize 20 -TitleFontBold -AreaOrientation Vertical -EnableCustomColorPalette -CustomColorPalette @('#395879', '#59779a', '#7b98bc', '#9dbae0', '#c0ddff') -AxesMarginsTop 0.5
+                            if ($Chart) {
+                                Section -Style Heading3 $reportTranslate.MEMUsageChart {
+                                    Image -Text $reportTranslate.MEMUsageChart -Align 'Center' -Percent 70 -Base64 $Chart
+                                }
+                            }
+                        } catch {
+                            Write-PScriboMessage -IsWarning $_.Exception.Message
+                        }
+                        try {
+                            $ProcessDiagram = Get-AbrProcessDiagram
+                            if ($ProcessDiagram) {
+                                Export-AbrDiagram -DiagramObject $ProcessDiagram -MainDiagramLabel $reportTranslate.MainDiagramLabel -FileName 'AsBuiltReport.System.Resources.Cluster'
+                            } else {
+                                Write-PScriboMessage -IsWarning $reportTranslate.Unable
+                            }
+                        } catch {
+                            Write-PScriboMessage -IsWarning $($_.Exception.Message)
+                        }
                     }
                 }
             }

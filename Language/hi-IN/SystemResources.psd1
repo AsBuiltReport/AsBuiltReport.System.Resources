@@ -27,6 +27,16 @@
     Company = कंपनी
     Product = उत्पाद
     Unknown = अज्ञात
+
+    Generating = प्रक्रिया आरेख बनाना।
+    Label = प्रक्रिया पदानुक्रम
+    MainDiagramLabel = प्रक्रिया पदानुक्रम आरेख
+    Unable = प्रक्रिया पदानुक्रम आरेख बनाने में असमर्थ।
+    MEMUsage = मेमोरी उपयोग
+    CPUUsage = CPU उपयोग
+    Processes = प्रक्रियाएं
+    MEMUsageChart = मेमोरी उपयोग - चार्ट
+    CPUUsageChart = CPU उपयोग - चार्ट
 '@
 
     # Get-AbrTimeZone

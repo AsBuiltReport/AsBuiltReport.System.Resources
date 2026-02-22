@@ -1,10 +1,5 @@
 # culture = 'da-DK'
 @{
-    # Invoke-AsBuiltReport.System.Resources
-    InvokeAsBuiltReportSystemResources = ConvertFrom-StringData @'
-    MainDiagramLabel = Proceshierarki Diagram
-    Unable = Kan ikke generere Proceshierarki Diagram.
-'@
     # Get-AbrDate
     GetAbrDate = ConvertFrom-StringData @'
     InfoLevel  = {0} InfoLevel indstillet til {1}.
@@ -31,6 +26,16 @@
     Company = Virksomhed
     Product = Produkt
     Unknown = Ukendt
+
+    Generating = Genererer procesdiagram.
+    Label = Proceshierarki
+    MainDiagramLabel = Proceshierarkidiagram
+    Unable = Kan ikke generere proceshierarkidiagrammet.
+    MEMUsage = Brug af hukommelse
+    CPUUsage = Brug af CPU
+    Processes = Processer
+    MEMUsageChart = Brug af hukommelse - Diagram
+    CPUUsageChart = Brug af CPU - Diagram
 '@
 
     # Get-AbrTimeZone
@@ -79,11 +84,5 @@
     Yes = Ja
     No = Nej
     Unknown = Ukendt
-'@
-    # Get-AbrProcessDiagram
-    GetAbrProcessDiagram = ConvertFrom-StringData @'
-    InfoLevel = {0} InfoLevel indstillet til {1}.
-    Generating = Genererer procesdiagram.
-    Label = Proceshierarki
 '@
 }

@@ -19,7 +19,6 @@ function Get-AbrProcessDiagram {
     )
 
     begin {
-        $reportTranslate = $reportTranslate.GetAbrProcessDiagram
         Write-PScriboMessage ($($reportTranslate.InfoLevel) -f 'ProcessInfo', $($InfoLevel.ProcessInfo))
         Write-PScriboMessage $($reportTranslate.Generating)
         # Used for DiagramDebug

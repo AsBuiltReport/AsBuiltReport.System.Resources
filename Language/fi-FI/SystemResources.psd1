@@ -31,6 +31,16 @@
     Company = Yritys
     Product = Tuote
     Unknown = Tuntematon
+
+    Generating = Luodaan prosessikaaviota.
+    Label = Prosessihierarkia
+    MainDiagramLabel = Prosessihierarkia Kaavio
+    Unable = Prosessihierarkia Kaaviota ei voida luoda.
+    MEMUsage = Muistin käyttö
+    CPUUsage = CPU:n käyttö
+    Processes = Prosessit
+    MEMUsageChart = Muistin käyttö - Kaavio
+    CPUUsageChart = CPU:n käyttö - Kaavio
 '@
 
     # Get-AbrTimeZone

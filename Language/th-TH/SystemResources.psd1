@@ -27,6 +27,16 @@
     Company = บริษัท
     Product = ผลิตภัณฑ์
     Unknown = ไม่ทราบ
+
+    Generating = กำลังสร้างแผนภาพกระบวนการ
+    Label = ลำดับชั้นของกระบวนการ
+    MainDiagramLabel = แผนภาพลำดับชั้นของกระบวนการ
+    Unable = ไม่สามารถสร้างแผนภาพลำดับชั้นของกระบวนการได้
+    MEMUsage = การใช้หน่วยความจำ
+    CPUUsage = การใช้ CPU
+    Processes = กระบวนการ
+    MEMUsageChart = การใช้หน่วยความจำ - แผนภาพ
+    CPUUsageChart = การใช้ CPU - แผนภาพ
 '@
 
     # Get-AbrTimeZone

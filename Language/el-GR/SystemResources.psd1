@@ -1,10 +1,5 @@
 # culture = 'el-GR'
 @{
-    # Invoke-AsBuiltReport.System.Resources
-    InvokeAsBuiltReportSystemResources = ConvertFrom-StringData @'
-    MainDiagramLabel = Διάγραμμα Ιεραρχίας Διαδικασιών
-    Unable = Δεν είναι δυνατή η δημιουργία του Διαγράμματος Ιεραρχίας Διαδικασιών.
-'@
     # Get-AbrDate
     GetAbrDate = ConvertFrom-StringData @'
     InfoLevel  = {0} InfoLevel ορίστηκε σε {1}.
@@ -31,6 +26,16 @@
     Company = Εταιρεία
     Product = Προϊόν
     Unknown = Άγνωστο
+
+    Generating = Δημιουργία διαγράμματος διεργασιών.
+    Label = Ιεραρχία διεργασιών
+    MainDiagramLabel = Διάγραμμα ιεραρχίας διεργασιών
+    Unable = Αδυναμία δημιουργίας διαγράμματος ιεραρχίας διεργασιών.
+    MEMUsage = Χρήση μνήμης
+    CPUUsage = Χρήση CPU
+    Processes = Διεργασίες
+    MEMUsageChart = Χρήση μνήμης - Διάγραμμα
+    CPUUsageChart = Χρήση CPU - Διάγραμμα
 '@
 
     # Get-AbrTimeZone
@@ -79,11 +84,5 @@
     Yes = Ναι
     No = Όχι
     Unknown = Άγνωστο
-'@
-    # Get-AbrProcessDiagram
-    GetAbrProcessDiagram = ConvertFrom-StringData @'
-    InfoLevel = {0} InfoLevel ορίστηκε σε {1}.
-    Generating = Δημιουργία διαγράμματος διεργασιών.
-    Label = Ιεραρχία διεργασιών
 '@
 }

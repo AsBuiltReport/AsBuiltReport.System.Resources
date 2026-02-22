@@ -27,6 +27,16 @@
     Company = Bedrijf
     Product = Product
     Unknown = Onbekend
+
+    Generating = Genereren van procesdiagram.
+    Label = Proceshiërarchie
+    MainDiagramLabel = Proceshiërarchiediagram
+    Unable = Kan het proceshiërarchiediagram niet genereren.
+    MEMUsage = Geheugen gebruik
+    CPUUsage = CPU gebruik
+    Processes = Processen
+    MEMUsageChart = Geheugen gebruik - Diagram
+    CPUUsageChart = CPU gebruik - Diagram
 '@
 
     # Get-AbrTimeZone

@@ -27,6 +27,16 @@
     Company = Společnost
     Product = Produkt
     Unknown = Neznámý
+
+    Generating = Generování diagramu procesů.
+    Label = Hierarchie procesů
+    MainDiagramLabel = Diagram hierarchie procesů
+    Unable = Nelze vygenerovat diagram hierarchie procesů.
+    MEMUsage = Použití paměti
+    CPUUsage = Použití CPU
+    Processes = Procesy
+    MEMUsageChart = Použití paměti - Graf
+    CPUUsageChart = Použití CPU - Graf
 '@
 
     # Get-AbrTimeZone

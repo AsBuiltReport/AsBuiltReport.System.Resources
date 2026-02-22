@@ -1,10 +1,5 @@
 # culture = 'en-US'
 @{
-    # Invoke-AsBuiltReport.System.Resources
-    InvokeAsBuiltReportSystemResources = ConvertFrom-StringData @'
-    MainDiagramLabel = Process Hierarchy Diagram
-    Unable = Unable to generate the Process Hierarchy Diagram.
-'@
     # Get-AbrDate
     GetAbrDate = ConvertFrom-StringData @'
     InfoLevel  = {0} InfoLevel set at {1}.
@@ -31,6 +26,16 @@
     Company = Company
     Product = Product
     Unknown = Unknown
+
+    Generating = Generating Process Diagram.
+    Label = Process Hierarchy
+    MainDiagramLabel = Process Hierarchy Diagram
+    Unable = Unable to generate the Process Hierarchy Diagram.
+    MEMUsage = Memory Usage
+    CPUUsage = CPU Usage
+    Processes = Processes
+    MEMUsageChart = Memory Usage - Chart
+    CPUUsageChart = CPU Usage - Chart
 '@
 
     # Get-AbrTimeZone
@@ -80,11 +85,4 @@
     No = No
     Unknown = Unknown
 '@
-    # Get-AbrProcessDiagram
-    GetAbrProcessDiagram = ConvertFrom-StringData @'
-    InfoLevel = {0} InfoLevel set at {1}.
-    Generating = Generating Process Diagram.
-    Label = Process Hierarchy
-'@
-
 }

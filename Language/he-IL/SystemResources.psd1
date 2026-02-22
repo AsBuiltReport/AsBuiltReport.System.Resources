@@ -27,6 +27,16 @@
     Company = חברה
     Product = מוצר
     Unknown = לא ידוע
+
+    Generating = יצירת דיאגרמת תהליכים.
+    Label = היררכיית תהליכים
+    MainDiagramLabel = דיאגרמת היררכיית תהליכים
+    Unable = לא ניתן ליצור את דיאגרמת היררכיית התהליכים.
+    MEMUsage = שימוש בזיכרון
+    CPUUsage = שימוש ב-CPU
+    Processes = תהליכים
+    MEMUsageChart = שימוש בזיכרון - דיאגרמה
+    CPUUsageChart = שימוש ב-CPU - דיאגרמה
 '@
 
     # Get-AbrTimeZone

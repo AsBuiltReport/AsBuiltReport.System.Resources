@@ -116,7 +116,7 @@ function Export-AbrDiagram {
                 $Diagram = New-Diagrammer @DiagramParams -InputObject $Graph
                 if ($Diagram) {
                     $BestAspectRatio = Get-DiaBestImageAspectRatio -GraphObj $Diagram -MaxWidth 600
-                    Section -Style Heading2 $MainDiagramLabel {
+                    Section -Style Heading3 $MainDiagramLabel {
                         Image -Base64 $Diagram -Text "$MainDiagramLabel Diagram" -Width $BestAspectRatio.Width -Height $BestAspectRatio.Height -Align Center
                     }
                 }

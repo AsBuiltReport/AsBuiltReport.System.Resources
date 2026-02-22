@@ -1,10 +1,5 @@
 # culture = 'es-ES'
 @{
-    # Invoke-AsBuiltReport.System.Resources
-    InvokeAsBuiltReportSystemResources = ConvertFrom-StringData @'
-    MainDiagramLabel = Diagrama de Jerarquía de Procesos
-    Unable = No se puede generar el Diagrama de Jerarquía de Procesos.
-'@
     # Get-AbrDate
     GetAbrDate = ConvertFrom-StringData @'
     InfoLevel  = {0} InfoLevel configurado en {1}.
@@ -31,6 +26,16 @@
     Company = Compañía
     Product = Producto
     Unknown = Desconocido
+
+    Generating = Generando Diagrama de Procesos.
+    Label = Jerarquía de Procesos
+    MainDiagramLabel = Diagrama de Jerarquía de Procesos
+    Unable = No se puede generar el Diagrama de Jerarquía de Procesos.
+    MEMUsage = Uso de Memoria
+    CPUUsage = Uso de CPU
+    Processes = Procesos
+    MEMUsageChart = Uso de Memoria - Gráfico
+    CPUUsageChart = Uso de CPU - Gráfico
 '@
 
     # Get-AbrTimeZone
@@ -79,11 +84,5 @@
     Yes = Sí
     No = No
     Unknown = Desconocido
-'@
-    # Get-AbrProcessDiagram
-    GetAbrProcessDiagram = ConvertFrom-StringData @'
-    InfoLevel = {0} InfoLevel configurado en {1}.
-    Generating = Generando Diagrama de Procesos.
-    Label = Jerarquía de Procesos
 '@
 }

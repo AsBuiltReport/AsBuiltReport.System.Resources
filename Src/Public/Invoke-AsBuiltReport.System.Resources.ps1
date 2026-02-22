@@ -33,14 +33,10 @@ function Invoke-AsBuiltReport.System.Resources {
     $InfoLevel = $ReportConfig.InfoLevel
     $Options = $ReportConfig.Options
 
-    # Import Translated Strings
-    $LocalizedData = $reportTranslate.InvokeAsBuiltReportSystemResources
-
     # Used to set values to TitleCase where required
     $TextInfo = (Get-Culture).TextInfo
 
-    # Update/rename the $System variable and build out your code within the ForEach loop. The ForEach loop enables AsBuiltReport to generate an as built configuration against multiple defined targets.
-
+    # Used to set diagrams icon images
     $script:Images = @{
         'AsBuiltReport_LOGO' = 'AsBuiltReport_Logo.png'
         'AsBuiltReport_Signature' = 'AsBuiltReport_Signature.png'
@@ -55,12 +51,6 @@ function Invoke-AsBuiltReport.System.Resources {
             Get-AbrUptime
             Get-AbrPSHost
             Get-AbrProcessInfo
-            $ProcessDiagram = Get-AbrProcessDiagram
-            if ($ProcessDiagram) {
-                Export-AbrDiagram -DiagramObject $ProcessDiagram -MainDiagramLabel $LocalizedData.MainDiagramLabel -FileName 'AsBuiltReport.System.Resources.Cluster'
-            } else {
-                Write-PScriboMessage -IsWarning $LocalizedData.Unable
-            }
         }
 
     }

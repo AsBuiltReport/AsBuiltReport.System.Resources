@@ -1,10 +1,5 @@
 # culture = 'de-DE'
 @{
-    # Invoke-AsBuiltReport.System.Resources
-    InvokeAsBuiltReportSystemResources = ConvertFrom-StringData @'
-    MainDiagramLabel = Prozesshierarchie Diagramm
-    Unable = Das Prozesshierarchie Diagramm kann nicht generiert werden.
-'@
     # Get-AbrDate
     GetAbrDate = ConvertFrom-StringData @'
     InfoLevel  = {0} InfoLevel auf {1} gesetzt.
@@ -31,6 +26,16 @@
     Company = Unternehmen
     Product = Produkt
     Unknown = Unbekannt
+
+    Generating = Generieren des Prozessdiagramms.
+    Label = Prozesshierarchie
+    MainDiagramLabel = Prozesshierarchiediagramm
+    Unable = Unfähig, das Prozesshierarchiediagramm zu generieren.
+    MEMUsage = Speichernutzung
+    CPUUsage = CPU-Auslastung
+    Processes = Prozesse
+    MEMUsageChart = Speichernutzung - Diagramm
+    CPUUsageChart = CPU-Auslastung - Diagramm
 '@
 
     # Get-AbrTimeZone
@@ -79,11 +84,5 @@
     Yes = Ja
     No = Nein
     Unknown = Unbekannt
-'@
-    # Get-AbrProcessDiagram
-    GetAbrProcessDiagram = ConvertFrom-StringData @'
-    InfoLevel = {0} InfoLevel auf {1} gesetzt.
-    Generating = Generiere Prozessdiagramm.
-    Label = Prozesshierarchie
 '@
 }

@@ -27,6 +27,16 @@
     Company = 会社
     Product = 製品
     Unknown = 不明
+
+    Generating = プロセス図を生成しています。
+    Label = プロセス階層
+    MainDiagramLabel = プロセス階層図
+    Unable = プロセス階層図を生成できません。
+    MEMUsage = メモリ使用量
+    CPUUsage = CPU使用量
+    Processes = プロセス
+    MEMUsageChart = メモリ使用量 - チャート
+    CPUUsageChart = CPU使用量 - チャート
 '@
 
     # Get-AbrTimeZone
