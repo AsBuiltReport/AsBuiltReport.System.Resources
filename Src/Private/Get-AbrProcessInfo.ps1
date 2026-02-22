@@ -34,7 +34,7 @@ function Get-AbrProcessInfo {
                         $SystemProcessInfo = @()
                         foreach ($Process in $SystemProcess) {
                             $InObj = [Ordered]@{
-                                $($reportTranslate.Name) = $Process.ProcessName
+                                $($reportTranslate.Name) = $Process.ProcessName.Split(' ')[0]
                                 $($reportTranslate.Id) = $Process.Id
                                 $($reportTranslate.CPU) = & { try { [math]::Round($Process.CPU, 0) } catch { '--' } }
                                 $($reportTranslate.Memory) = & { try { [math]::Round($Process.WorkingSet / 1MB, 0) } catch { '--' } }

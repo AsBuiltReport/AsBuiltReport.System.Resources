@@ -50,7 +50,7 @@ function Get-AbrProcessDiagram {
 
     process {
         try {
-            $Process = Get-Process | Sort-Object -Property CPU -Descending | Select-Object -Property @{Name = 'Name'; Expression = { "$($_.Name) (Id=$($_.Id))" } } -First 5
+            $Process = Get-Process | Sort-Object -Property CPU -Descending | Select-Object -Property @{Name = 'Name'; Expression = { "$($_.Name.Split(' ')[0]) (Id=$($_.Id))" } } -First 5
             SubGraph ProcessH -Attributes @{Label = $($reportTranslate.Label); fontsize = 22; penwidth = 1.5; labelloc = 't'; style = 'dashed,rounded'; color = 'gray' } {
                 Node 'System' -NodeScript { $_ } -Attributes @{shape = 'rectangle'; style = 'filled'; fillcolor = '#EDEDED'; color = '#71797E'; fontcolor = $Fontcolor; penwidth = 1.5; }
                 Node $Process.Name -NodeScript { $_ } -Attributes @{shape = 'rectangle'; style = 'filled'; fillcolor = '#EDEDED'; color = '#71797E'; fontcolor = $Fontcolor; penwidth = 1.5; }
