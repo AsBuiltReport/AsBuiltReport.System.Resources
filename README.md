@@ -41,8 +41,6 @@ System Resources As Built Report is a PowerShell module which works in conjuncti
 Please refer to the AsBuiltReport [website](https://www.asbuiltreport.com) for more detailed information about this project.
 
 ## :books: Sample Reports
-
-### Sample Report
 Sample System Resources As Built report HTML file: [Sample System Resources As-Built Report.html](https://htmlpreview.github.io/?https://raw.githubusercontent.com/AsBuiltReport/AsBuiltReport.System.Resources/dev/Samples/Sample%20System%20Resources%20As-Built%20Report.html)
 
 # :beginner: Getting Started
