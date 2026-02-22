@@ -31,7 +31,7 @@
         "TimeZone": 2,
         "Uptime": 2,
         "PSHost": 2,
-        "ProcessInfo": 2
+        "ProcessInfo": 1
     },
     "HealthCheck": {}
 }
