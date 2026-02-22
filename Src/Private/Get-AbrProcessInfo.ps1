@@ -27,7 +27,7 @@ function Get-AbrProcessInfo {
     process {
         try {
             if ($InfoLevel.ProcessInfo -gt 0) {
-                $SystemProcess = Get-Process | Sort-Object -Property CPU -Descending | Select-Object -First 10
+                $SystemProcess = Get-Process | Sort-Object -Property CPU -Descending | Select-Object -First 5
                 if ($SystemProcess) {
                     Write-PScriboMessage $reportTranslate.Collecting
                     Section -Style Heading2 $($reportTranslate.Heading) {

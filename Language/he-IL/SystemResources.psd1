@@ -17,7 +17,7 @@
     InfoLevel  = {0} InfoLevel הוגדר ל-{1}.
     Collecting  = איסוף מידע על תהליכי המערכת.
     ParagraphDetail = הסעיפים הבאים מפרטים את תהליכי המערכת.
-    ParagraphSummary = הטבלה הבאה מסכמת את 10 תהליכי המערכת המובילים. למידע מפורט יותר, הגדר את הערך InfoLevel.ProcessInfo ל-2 בקובץ תצורת הדוח שלך. ממוין לפי שימוש ב-CPU.
+    ParagraphSummary = הטבלה הבאה מסכמת את 5 תהליכי המערכת המובילים. למידע מפורט יותר, הגדר את הערך InfoLevel.ProcessInfo ל-2 בקובץ תצורת הדוח שלך. ממוין לפי שימוש ב-CPU.
     Heading = תהליכים
 
     Name = שם

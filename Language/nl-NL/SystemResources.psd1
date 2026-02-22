@@ -17,7 +17,7 @@
     InfoLevel  = {0} InfoLevel ingesteld op {1}.
     Collecting  = Verzamelen van systeemprocesinformatie.
     ParagraphDetail = De volgende secties beschrijven de systeemprocessen.
-    ParagraphSummary = De volgende tabel geeft een overzicht van de top 10 systeemprocessen. Voor meer gedetailleerde informatie stelt u de waarde InfoLevel.ProcessInfo in op 2 in uw rapportconfiguratiebestand. Gesorteerd op CPU-gebruik.
+    ParagraphSummary = De volgende tabel geeft een overzicht van de top 5 systeemprocessen. Voor meer gedetailleerde informatie stelt u de waarde InfoLevel.ProcessInfo in op 2 in uw rapportconfiguratiebestand. Gesorteerd op CPU-gebruik.
     Heading = Processen
 
     Name = Naam

@@ -17,7 +17,7 @@
     InfoLevel  = {0} InfoLevel được đặt ở {1}.
     Collecting  = Đang thu thập thông tin tiến trình hệ thống.
     ParagraphDetail = Các phần sau mô tả chi tiết các tiến trình hệ thống.
-    ParagraphSummary = Bảng sau tóm tắt 10 tiến trình hệ thống hàng đầu. Để biết thông tin chi tiết hơn, vui lòng đặt giá trị InfoLevel.ProcessInfo thành 2 trong tệp cấu hình báo cáo của bạn. Được sắp xếp theo mức sử dụng CPU.
+    ParagraphSummary = Bảng sau tóm tắt 5 tiến trình hệ thống hàng đầu. Để biết thông tin chi tiết hơn, vui lòng đặt giá trị InfoLevel.ProcessInfo thành 2 trong tệp cấu hình báo cáo của bạn. Được sắp xếp theo mức sử dụng CPU.
     Heading = Tiến trình
 
     Name = Tên

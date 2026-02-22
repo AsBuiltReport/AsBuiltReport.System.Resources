@@ -17,7 +17,7 @@
     InfoLevel  = {0} InfoLevel set at {1}.
     Collecting  = Collecting System Process information.
     ParagraphDetail = The following sections detail the system process.
-    ParagraphSummary = The following table summarises the top 10 system process. For more detailed information, please set the InfoLevel.ProcessInfo value to 2 in your report configuration file. Sorted by CPU usage.
+    ParagraphSummary = The following table summarises the top 5 system process. For more detailed information, please set the InfoLevel.ProcessInfo value to 2 in your report configuration file. Sorted by CPU usage.
     Heading = Process
 
     Name = Name

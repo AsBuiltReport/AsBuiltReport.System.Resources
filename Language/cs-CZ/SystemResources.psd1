@@ -17,7 +17,7 @@
     InfoLevel  = {0} InfoLevel nastaven na {1}.
     Collecting  = Shromažďování informací o systémových procesech.
     ParagraphDetail = Následující části podrobně popisují systémové procesy.
-    ParagraphSummary = Následující tabulka shrnuje top 10 systémových procesů. Pro podrobnější informace nastavte hodnotu InfoLevel.ProcessInfo na 2 v konfiguračním souboru sestavy. Seřazeno podle využití CPU.
+    ParagraphSummary = Následující tabulka shrnuje top 5 systémových procesů. Pro podrobnější informace nastavte hodnotu InfoLevel.ProcessInfo na 2 v konfiguračním souboru sestavy. Seřazeno podle využití CPU.
     Heading = Procesy
 
     Name = Název
