@@ -8,7 +8,7 @@ jobs:
     publish-to-gallery:
         runs-on: windows-latest
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - name: Set PSRepository to Trusted for PowerShell Gallery
               shell: pwsh
               run: |
@@ -17,6 +17,14 @@ jobs:
               shell: pwsh
               run: |
                   Install-Module -Name AsBuiltReport.Core -Repository PSGallery -Force
+            - name: Install AsBuiltReport.Chart module
+              shell: pwsh
+              run: |
+                  Install-Module -Name AsBuiltReport.Chart -Repository PSGallery -Force
+            - name: Install Diagrammer.Core module
+              shell: pwsh
+              run: |
+                  Install-Module -Name Diagrammer.Core -Repository PSGallery -Force
             - name: Test Module Manifest
               shell: pwsh
               run: |
