@@ -17,7 +17,7 @@
     InfoLevel  = {0} InfoLevel 设置为 {1}。
     Collecting  = 正在收集系统进程信息。
     ParagraphDetail = 以下各节详细说明系统进程。
-    ParagraphSummary = 下表总结了前 10 个系统进程。如需更详细的信息，请在报告配置文件中将 InfoLevel.ProcessInfo 值设置为 2。按 CPU 使用率排序。
+    ParagraphSummary = 下表总结了前 5 个系统进程。如需更详细的信息，请在报告配置文件中将 InfoLevel.ProcessInfo 值设置为 2。按 CPU 使用率排序。
     Heading = 进程
 
     Name = 名称

@@ -17,7 +17,7 @@
     InfoLevel  = {0} InfoLevel défini à {1}.
     Collecting  = Collecte des informations sur les processus système.
     ParagraphDetail = Les sections suivantes détaillent les processus système.
-    ParagraphSummary = Le tableau suivant résume les 10 principaux processus système. Pour plus d'informations, veuillez définir la valeur InfoLevel.ProcessInfo à 2 dans votre fichier de configuration du rapport. Trié par utilisation CPU.
+    ParagraphSummary = Le tableau suivant résume les 5 principaux processus système. Pour plus d'informations, veuillez définir la valeur InfoLevel.ProcessInfo à 2 dans votre fichier de configuration du rapport. Trié par utilisation CPU.
     Heading = Processus
 
     Name = Nom

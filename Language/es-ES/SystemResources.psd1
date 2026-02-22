@@ -1,6 +1,10 @@
 # culture = 'es-ES'
 @{
-
+    # Invoke-AsBuiltReport.System.Resources
+    InvokeAsBuiltReportSystemResources = ConvertFrom-StringData @'
+    MainDiagramLabel = Diagrama de Jerarquía de Procesos
+    Unable = No se puede generar el Diagrama de Jerarquía de Procesos.
+'@
     # Get-AbrDate
     GetAbrDate = ConvertFrom-StringData @'
     InfoLevel  = {0} InfoLevel configurado en {1}.
@@ -17,7 +21,7 @@
     InfoLevel  = {0} InfoLevel configurado en {1}.
     Collecting  = Recopilando información del proceso del sistema.
     ParagraphDetail = Las siguientes secciones detallan el proceso del sistema.
-    ParagraphSummary = La siguiente tabla resume los 10 principales procesos del sistema. Para obtener información más detallada, establezca el valor de InfoLevel.ProcessInfo en 2 en su archivo de configuración del informe. Ordenado por uso de CPU.
+    ParagraphSummary = La siguiente tabla resume los 5 principales procesos del sistema. Para obtener información más detallada, establezca el valor de InfoLevel.ProcessInfo en 2 en su archivo de configuración del informe. Ordenado por uso de CPU.
     Heading = Procesos
 
     Name = Nombre
@@ -75,5 +79,11 @@
     Yes = Sí
     No = No
     Unknown = Desconocido
+'@
+    # Get-AbrProcessDiagram
+    GetAbrProcessDiagram = ConvertFrom-StringData @'
+    InfoLevel = {0} InfoLevel configurado en {1}.
+    Generating = Generando Diagrama de Procesos.
+    Label = Jerarquía de Procesos
 '@
 }

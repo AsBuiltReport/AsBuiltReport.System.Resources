@@ -17,7 +17,7 @@
     InfoLevel  = {0} InfoLevel satt til {1}.
     Collecting  = Samler informasjon om systemprosesser.
     ParagraphDetail = Følgende avsnitt beskriver systemprosessene.
-    ParagraphSummary = Følgende tabell oppsummerer de 10 viktigste systemprosessene. For mer detaljert informasjon, sett InfoLevel.ProcessInfo-verdien til 2 i rapportkonfigurasjonsfilen din. Sortert etter CPU-bruk.
+    ParagraphSummary = Følgende tabell oppsummerer de 5 viktigste systemprosessene. For mer detaljert informasjon, sett InfoLevel.ProcessInfo-verdien til 2 i rapportkonfigurasjonsfilen din. Sortert etter CPU-bruk.
     Heading = Prosesser
 
     Name = Navn

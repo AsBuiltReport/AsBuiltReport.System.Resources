@@ -1,6 +1,10 @@
 # culture = 'el-GR'
 @{
-
+    # Invoke-AsBuiltReport.System.Resources
+    InvokeAsBuiltReportSystemResources = ConvertFrom-StringData @'
+    MainDiagramLabel = Διάγραμμα Ιεραρχίας Διαδικασιών
+    Unable = Δεν είναι δυνατή η δημιουργία του Διαγράμματος Ιεραρχίας Διαδικασιών.
+'@
     # Get-AbrDate
     GetAbrDate = ConvertFrom-StringData @'
     InfoLevel  = {0} InfoLevel ορίστηκε σε {1}.
@@ -17,7 +21,7 @@
     InfoLevel  = {0} InfoLevel ορίστηκε σε {1}.
     Collecting  = Συλλογή πληροφοριών διεργασιών συστήματος.
     ParagraphDetail = Οι ακόλουθες ενότητες περιγράφουν τις διεργασίες του συστήματος.
-    ParagraphSummary = Ο παρακάτω πίνακας συνοψίζει τις κορυφαίες 10 διεργασίες του συστήματος. Για πιο λεπτομερείς πληροφορίες, ορίστε την τιμή InfoLevel.ProcessInfo σε 2 στο αρχείο διαμόρφωσης της αναφοράς σας. Ταξινομημένες κατά χρήση CPU.
+    ParagraphSummary = Ο παρακάτω πίνακας συνοψίζει τις κορυφαίες 5 διεργασίες του συστήματος. Για πιο λεπτομερείς πληροφορίες, ορίστε την τιμή InfoLevel.ProcessInfo σε 2 στο αρχείο διαμόρφωσης της αναφοράς σας. Ταξινομημένες κατά χρήση CPU.
     Heading = Διεργασίες
 
     Name = Όνομα
@@ -75,5 +79,11 @@
     Yes = Ναι
     No = Όχι
     Unknown = Άγνωστο
+'@
+    # Get-AbrProcessDiagram
+    GetAbrProcessDiagram = ConvertFrom-StringData @'
+    InfoLevel = {0} InfoLevel ορίστηκε σε {1}.
+    Generating = Δημιουργία διαγράμματος διεργασιών.
+    Label = Ιεραρχία διεργασιών
 '@
 }

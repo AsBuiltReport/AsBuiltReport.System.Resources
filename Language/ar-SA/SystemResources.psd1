@@ -1,5 +1,10 @@
 # culture = 'ar-SA'
 @{
+    # Invoke-AsBuiltReport.System.Resources
+    InvokeAsBuiltReportSystemResources = ConvertFrom-StringData @'
+    MainDiagramLabel = مخطط تسلسل العمليات
+    Unable = غير قادر على إنشاء مخطط تسلسل العمليات.
+'@
 
     # Get-AbrDate
     GetAbrDate = ConvertFrom-StringData @'
@@ -17,7 +22,7 @@
     InfoLevel  = {0} تم تعيين InfoLevel على {1}.
     Collecting  = جمع معلومات عمليات النظام.
     ParagraphDetail = تفصل الأقسام التالية عمليات النظام.
-    ParagraphSummary = يلخص الجدول التالي أهم 10 عمليات للنظام. لمزيد من المعلومات التفصيلية، يرجى تعيين قيمة InfoLevel.ProcessInfo على 2 في ملف تكوين التقرير الخاص بك. مرتبة حسب استخدام CPU.
+    ParagraphSummary = يلخص الجدول التالي أهم 5 عمليات للنظام. لمزيد من المعلومات التفصيلية، يرجى تعيين قيمة InfoLevel.ProcessInfo على 2 في ملف تكوين التقرير الخاص بك. مرتبة حسب استخدام CPU.
     Heading = العمليات
 
     Name = الاسم
@@ -75,5 +80,11 @@
     Yes = نعم
     No = لا
     Unknown = غير معروف
+'@
+    # Get-AbrProcessDiagram
+    GetAbrProcessDiagram = ConvertFrom-StringData @'
+    InfoLevel = {0} تم تعيين InfoLevel على {1}.
+    Generating = جاري إنشاء مخطط تسلسل العمليات.
+    Label = مخطط تسلسل العمليات
 '@
 }

@@ -17,7 +17,7 @@
     InfoLevel  = {0} InfoLevel impostato su {1}.
     Collecting  = Raccolta informazioni sui processi di sistema.
     ParagraphDetail = Le seguenti sezioni descrivono i processi di sistema.
-    ParagraphSummary = La seguente tabella riassume i primi 10 processi di sistema. Per informazioni più dettagliate, impostare il valore InfoLevel.ProcessInfo su 2 nel file di configurazione del report. Ordinati per utilizzo CPU.
+    ParagraphSummary = La seguente tabella riassume i primi 5 processi di sistema. Per informazioni più dettagliate, impostare il valore InfoLevel.ProcessInfo su 2 nel file di configurazione del report. Ordinati per utilizzo CPU.
     Heading = Processi
 
     Name = Nome

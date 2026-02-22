@@ -1,6 +1,10 @@
 # culture = 'da-DK'
 @{
-
+    # Invoke-AsBuiltReport.System.Resources
+    InvokeAsBuiltReportSystemResources = ConvertFrom-StringData @'
+    MainDiagramLabel = Proceshierarki Diagram
+    Unable = Kan ikke generere Proceshierarki Diagram.
+'@
     # Get-AbrDate
     GetAbrDate = ConvertFrom-StringData @'
     InfoLevel  = {0} InfoLevel indstillet til {1}.
@@ -17,7 +21,7 @@
     InfoLevel  = {0} InfoLevel indstillet til {1}.
     Collecting  = Indsamler information om systemprocesser.
     ParagraphDetail = Følgende afsnit beskriver systemprocesserne.
-    ParagraphSummary = Følgende tabel opsummerer de top 10 systemprocesser. For mere detaljeret information skal du indstille InfoLevel.ProcessInfo værdien til 2 i din rapportkonfigurationsfil. Sorteret efter CPU-brug.
+    ParagraphSummary = Følgende tabel opsummerer de top 5 systemprocesser. For mere detaljeret information skal du indstille InfoLevel.ProcessInfo værdien til 2 i din rapportkonfigurationsfil. Sorteret efter CPU-brug.
     Heading = Processer
 
     Name = Navn
@@ -75,5 +79,11 @@
     Yes = Ja
     No = Nej
     Unknown = Ukendt
+'@
+    # Get-AbrProcessDiagram
+    GetAbrProcessDiagram = ConvertFrom-StringData @'
+    InfoLevel = {0} InfoLevel indstillet til {1}.
+    Generating = Genererer procesdiagram.
+    Label = Proceshierarki
 '@
 }

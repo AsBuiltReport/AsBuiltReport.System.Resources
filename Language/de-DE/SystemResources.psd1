@@ -1,6 +1,10 @@
 # culture = 'de-DE'
 @{
-
+    # Invoke-AsBuiltReport.System.Resources
+    InvokeAsBuiltReportSystemResources = ConvertFrom-StringData @'
+    MainDiagramLabel = Prozesshierarchie Diagramm
+    Unable = Das Prozesshierarchie Diagramm kann nicht generiert werden.
+'@
     # Get-AbrDate
     GetAbrDate = ConvertFrom-StringData @'
     InfoLevel  = {0} InfoLevel auf {1} gesetzt.
@@ -17,7 +21,7 @@
     InfoLevel  = {0} InfoLevel auf {1} gesetzt.
     Collecting  = Sammeln von Systemprozessinformationen.
     ParagraphDetail = Die folgenden Abschnitte beschreiben die Systemprozesse.
-    ParagraphSummary = Die folgende Tabelle fasst die Top 10 Systemprozesse zusammen. Für detailliertere Informationen setzen Sie bitte den Wert InfoLevel.ProcessInfo in Ihrer Berichtskonfigurationsdatei auf 2. Sortiert nach CPU-Auslastung.
+    ParagraphSummary = Die folgende Tabelle fasst die Top 5 Systemprozesse zusammen. Für detailliertere Informationen setzen Sie bitte den Wert InfoLevel.ProcessInfo in Ihrer Berichtskonfigurationsdatei auf 2. Sortiert nach CPU-Auslastung.
     Heading = Prozesse
 
     Name = Name
@@ -75,5 +79,11 @@
     Yes = Ja
     No = Nein
     Unknown = Unbekannt
+'@
+    # Get-AbrProcessDiagram
+    GetAbrProcessDiagram = ConvertFrom-StringData @'
+    InfoLevel = {0} InfoLevel auf {1} gesetzt.
+    Generating = Generiere Prozessdiagramm.
+    Label = Prozesshierarchie
 '@
 }
