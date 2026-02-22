@@ -31,8 +31,8 @@
 
 # System Resources As Built Report
 
-<!-- ********** REMOVE THIS MESSAGE WHEN THE MODULE IS FUNCTIONAL ********** -->
-## :exclamation: THIS ASBUILTREPORT MODULE IS CURRENTLY IN DEVELOPMENT AND MIGHT NOT YET BE FUNCTIONAL ❗
+> [!IMPORTANT]
+> The intention of this report is to ilustrate the capabilities of the AsBuiltReport project. This report is not intended to be used for production environments and should only be used for testing and demonstration purposes.
 
 System Resources As Built Report is a PowerShell module which works in conjunction with [AsBuiltReport.Core](https://github.com/AsBuiltReport/AsBuiltReport.Core).
 
@@ -97,9 +97,6 @@ PowerShell 5.1 or PowerShell 7, and the following PowerShell modules are require
 ### :closed_lock_with_key: Required Privileges
 
 Local user privileges are required to run this report.
-
-> [!IMPORTANT]
-> The intention of this report is to demonstrate the multi-language capabilities of the AsBuiltReport project. Therefore, this report does not require any special privileges to run.
 
 ## :package: Module Installation
 
