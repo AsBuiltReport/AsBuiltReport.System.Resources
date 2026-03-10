@@ -12,7 +12,7 @@
     RootModule = 'AsBuiltReport.System.Resources.psm1'
 
     # Version number of this module.
-    ModuleVersion = '0.1.2'
+    ModuleVersion = '0.1.3'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -59,11 +59,11 @@
         },
         @{
             ModuleName = 'AsBuiltReport.Chart';
-            ModuleVersion = '0.2.0'
+            ModuleVersion = '0.3.0'
         },
         @{
-            ModuleName = 'Diagrammer.Core';
-            ModuleVersion = '0.2.38'
+            ModuleName = 'AsBuiltReport.Diagram';
+            ModuleVersion = '1.0.0'
         }
     )
 
