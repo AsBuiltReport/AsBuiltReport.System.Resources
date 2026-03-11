@@ -53,13 +53,13 @@ using namespace AvaloniaUIShell.Avalonia.Media
 # Guard - AvaloniaUIShell must be available
 # ---------------------------------------------------------------------------
 if (-not (Get-Module -Name AvaloniaUIShell -ListAvailable)) {
-    Write-Error @"
+    Write-Error @'
 The AvaloniaUIShell module is required to run the GUI.
 Install it with:
     Install-PSResource -Name AvaloniaUIShell
 On macOS / Linux also run:
     Enable-AUIExecution
-"@
+'@
     return
 }
 
@@ -83,17 +83,17 @@ $LanguageCodes = @(
 # Shared state accessible from the background runspace
 # ---------------------------------------------------------------------------
 $syncHash = [Hashtable]::Synchronized(@{
-    Log           = ''
-    IsRunning     = $false
-    CancelRequest = $false
-})
+        Log = ''
+        IsRunning = $false
+        CancelRequest = $false
+    })
 
 # ---------------------------------------------------------------------------
 # Helper: append a line to the log TextBox (thread-safe via AvaloniaUIShell)
 # ---------------------------------------------------------------------------
 function Add-LogLine {
     param ([string]$Message)
-    $ts   = (Get-Date).ToString('HH:mm:ss')
+    $ts = (Get-Date).ToString('HH:mm:ss')
     $line = "[$ts] $Message"
     $syncHash.LogBox.Text += "$line`n"
     # Auto-scroll to bottom
@@ -104,22 +104,22 @@ function Add-LogLine {
 # -- WINDOW ------------------------------------------------------------------
 # ===========================================================================
 $win = [Window]::new()
-$win.Title                        = 'AsBuiltReport - System Resources'
-$win.Width                        = 680
-$win.Height                       = 740
-$win.WindowStartupLocation        = 'CenterScreen'
-$win.CanMaximize                  = $false
+$win.Title = 'AsBuiltReport - System Resources'
+$win.Width = 680
+$win.Height = 740
+$win.WindowStartupLocation = 'CenterScreen'
+$win.CanMaximize = $false
 
 # ===========================================================================
 # -- SECTION HEADER FACTORY --------------------------------------------------
 # ===========================================================================
 function Get-SectionHeader {
     param ([string]$Text)
-    $tb            = [TextBlock]::new()
-    $tb.Text       = $Text
-    $tb.FontSize   = 13
+    $tb = [TextBlock]::new()
+    $tb.Text = $Text
+    $tb.FontSize = 13
     $tb.FontWeight = 'SemiBold'
-    $tb.Margin     = [Thickness]::new(0, 12, 0, 4)
+    $tb.Margin = [Thickness]::new(0, 12, 0, 4)
     $tb
 }
 
@@ -128,11 +128,11 @@ function Get-SectionHeader {
 # ===========================================================================
 
 # Target
-$lblTarget        = [TextBlock]::new(); $lblTarget.Text = 'Target:'
-$lblTarget.Width  = 130; $lblTarget.VerticalAlignment = 'Center'
-$txtTarget        = [TextBox]::new()
-$txtTarget.Text   = [System.Net.Dns]::GetHostName()
-$txtTarget.Width  = 380
+$lblTarget = [TextBlock]::new(); $lblTarget.Text = 'Target:'
+$lblTarget.Width = 130; $lblTarget.VerticalAlignment = 'Center'
+$txtTarget = [TextBox]::new()
+$txtTarget.Text = [System.Net.Dns]::GetHostName()
+$txtTarget.Width = 380
 $syncHash.TxtTarget = $txtTarget
 
 $rowTarget = [StackPanel]::new()
@@ -141,35 +141,35 @@ $rowTarget.Children.Add($lblTarget)
 $rowTarget.Children.Add($txtTarget)
 
 # Output Folder
-$lblFolder        = [TextBlock]::new(); $lblFolder.Text = 'Output Folder:'
-$lblFolder.Width  = 130; $lblFolder.VerticalAlignment = 'Center'
-$txtFolder        = [TextBox]::new()
-$txtFolder.Text   = [Environment]::GetFolderPath('Desktop')
-$txtFolder.Width  = 300
+$lblFolder = [TextBlock]::new(); $lblFolder.Text = 'Output Folder:'
+$lblFolder.Width = 130; $lblFolder.VerticalAlignment = 'Center'
+$txtFolder = [TextBox]::new()
+$txtFolder.Text = [Environment]::GetFolderPath('Desktop')
+$txtFolder.Width = 300
 $syncHash.TxtFolder = $txtFolder
 
-$btnBrowse        = [Button]::new()
+$btnBrowse = [Button]::new()
 $btnBrowse.Content = 'Browse Folder'
-$btnBrowse.Width   = 90
+$btnBrowse.Width = 120
 $btnBrowse.AddClick({
-    # Use PowerShell's native folder-picker dialog if available (Windows only);
-    # on other platforms fall back to manual text entry.
-    if ($IsWindows) {
-        try {
-            Add-Type -AssemblyName System.Windows.Forms -ErrorAction Stop
-            $dlg = [System.Windows.Forms.FolderBrowserDialog]::new()
-            $dlg.Description  = 'Select the report output folder'
-            $dlg.SelectedPath = $syncHash.TxtFolder.Text
-            if ($dlg.ShowDialog() -eq 'OK') {
-                $syncHash.TxtFolder.Text = $dlg.SelectedPath
+        # Use PowerShell's native folder-picker dialog if available (Windows only);
+        # on other platforms fall back to manual text entry.
+        if ($IsWindows) {
+            try {
+                Add-Type -AssemblyName System.Windows.Forms -ErrorAction Stop
+                $dlg = [System.Windows.Forms.FolderBrowserDialog]::new()
+                $dlg.Description = 'Select the report output folder'
+                $dlg.SelectedPath = $syncHash.TxtFolder.Text
+                if ($dlg.ShowDialog() -eq 'OK') {
+                    $syncHash.TxtFolder.Text = $dlg.SelectedPath
+                }
+            } catch {
+                Add-LogLine "Folder browser unavailable: $_. Please type the path directly."
             }
-        } catch {
-            Add-LogLine "Folder browser unavailable: $_. Please type the path directly."
+        } else {
+            Add-LogLine 'Folder browser not available on this platform - type the path directly.'
         }
-    } else {
-        Add-LogLine 'Folder browser not available on this platform - type the path directly.'
-    }
-})
+    })
 
 $rowFolder = [StackPanel]::new()
 $rowFolder.Orientation = 'Horizontal'; $rowFolder.Spacing = 8
@@ -178,11 +178,11 @@ $rowFolder.Children.Add($txtFolder)
 $rowFolder.Children.Add($btnBrowse)
 
 # Report Name
-$lblName        = [TextBlock]::new(); $lblName.Text = 'Report Name:'
-$lblName.Width  = 130; $lblName.VerticalAlignment = 'Center'
-$txtName        = [TextBox]::new()
-$txtName.Text   = 'System Resources As Built Report'
-$txtName.Width  = 380
+$lblName = [TextBlock]::new(); $lblName.Text = 'Report Name:'
+$lblName.Width = 130; $lblName.VerticalAlignment = 'Center'
+$txtName = [TextBox]::new()
+$txtName.Text = 'System Resources As Built Report'
+$txtName.Width = 380
 $syncHash.TxtName = $txtName
 
 $rowName = [StackPanel]::new()
@@ -191,10 +191,10 @@ $rowName.Children.Add($lblName)
 $rowName.Children.Add($txtName)
 
 # Language
-$lblLang        = [TextBlock]::new(); $lblLang.Text = 'Language:'
-$lblLang.Width  = 130; $lblLang.VerticalAlignment = 'Center'
-$cbLang         = [ComboBox]::new()
-$cbLang.Width   = 160
+$lblLang = [TextBlock]::new(); $lblLang.Text = 'Language:'
+$lblLang.Width = 130; $lblLang.VerticalAlignment = 'Center'
+$cbLang = [ComboBox]::new()
+$cbLang.Width = 160
 foreach ($code in $LanguageCodes) {
     $item = [ComboBoxItem]::new(); $item.Content = $code
     $cbLang.Items.Add($item) | Out-Null
@@ -217,13 +217,13 @@ $panelConfig.Children.Add($rowLang)
 # ===========================================================================
 # -- OUTPUT FORMATS ----------------------------------------------------------
 # ===========================================================================
-$chkHtml  = [CheckBox]::new(); $chkHtml.Content  = 'HTML';  $chkHtml.IsChecked  = $true
-$chkWord  = [CheckBox]::new(); $chkWord.Content  = 'Word';  $chkWord.IsChecked  = $false
-$chkText  = [CheckBox]::new(); $chkText.Content  = 'Text';  $chkText.IsChecked  = $false
+$chkHtml = [CheckBox]::new(); $chkHtml.Content = 'HTML'; $chkHtml.IsChecked = $true
+$chkWord = [CheckBox]::new(); $chkWord.Content = 'Word'; $chkWord.IsChecked = $false
+$chkText = [CheckBox]::new(); $chkText.Content = 'Text'; $chkText.IsChecked = $false
 $chkExcel = [CheckBox]::new(); $chkExcel.Content = 'Excel'; $chkExcel.IsChecked = $false
-$syncHash.ChkHtml  = $chkHtml
-$syncHash.ChkWord  = $chkWord
-$syncHash.ChkText  = $chkText
+$syncHash.ChkHtml = $chkHtml
+$syncHash.ChkWord = $chkWord
+$syncHash.ChkText = $chkText
 $syncHash.ChkExcel = $chkExcel
 
 $rowFormats = [StackPanel]::new()
@@ -240,13 +240,13 @@ $panelFormats.Children.Add($rowFormats)
 # ===========================================================================
 # -- OPTIONS -----------------------------------------------------------------
 # ===========================================================================
-$chkTimestamp   = [CheckBox]::new(); $chkTimestamp.Content   = 'Append Timestamp'; $chkTimestamp.IsChecked   = $true
-$chkHealth      = [CheckBox]::new(); $chkHealth.Content      = 'Enable HealthCheck'; $chkHealth.IsChecked    = $false
-$chkDiagrams    = [CheckBox]::new(); $chkDiagrams.Content    = 'Enable Diagrams';    $chkDiagrams.IsChecked  = $true
-$chkExportDiag  = [CheckBox]::new(); $chkExportDiag.Content  = 'Export Diagrams';    $chkExportDiag.IsChecked= $false
-$syncHash.ChkTimestamp  = $chkTimestamp
-$syncHash.ChkHealth     = $chkHealth
-$syncHash.ChkDiagrams   = $chkDiagrams
+$chkTimestamp = [CheckBox]::new(); $chkTimestamp.Content = 'Append Timestamp'; $chkTimestamp.IsChecked = $true
+$chkHealth = [CheckBox]::new(); $chkHealth.Content = 'Enable HealthCheck'; $chkHealth.IsChecked = $false
+$chkDiagrams = [CheckBox]::new(); $chkDiagrams.Content = 'Enable Diagrams'; $chkDiagrams.IsChecked = $true
+$chkExportDiag = [CheckBox]::new(); $chkExportDiag.Content = 'Export Diagrams'; $chkExportDiag.IsChecked = $false
+$syncHash.ChkTimestamp = $chkTimestamp
+$syncHash.ChkHealth = $chkHealth
+$syncHash.ChkDiagrams = $chkDiagrams
 $syncHash.ChkExportDiag = $chkExportDiag
 
 $rowOpt1 = [StackPanel]::new()
@@ -261,7 +261,7 @@ $rowOpt2.Children.Add($chkExportDiag)
 
 # Diagram Theme
 $lblTheme = [TextBlock]::new(); $lblTheme.Text = 'Diagram Theme:'; $lblTheme.VerticalAlignment = 'Center'
-$cbTheme  = [ComboBox]::new(); $cbTheme.Width = 120
+$cbTheme = [ComboBox]::new(); $cbTheme.Width = 120
 foreach ($t in @('White', 'Black', 'Neon')) {
     $item = [ComboBoxItem]::new(); $item.Content = $t
     $cbTheme.Items.Add($item) | Out-Null
@@ -285,35 +285,35 @@ $panelOptions.Children.Add($rowTheme)
 # ===========================================================================
 function Get-InfoLevelRow {
     param ([string]$Label, [int]$Default = 1)
-    $lbl       = [TextBlock]::new(); $lbl.Text  = "${Label}:"; $lbl.Width = 100; $lbl.VerticalAlignment = 'Center'
-    $cb        = [ComboBox]::new();  $cb.Width  = 70
+    $lbl = [TextBlock]::new(); $lbl.Text = "${Label}:"; $lbl.Width = 100; $lbl.VerticalAlignment = 'Center'
+    $cb = [ComboBox]::new(); $cb.Width = 70
     foreach ($n in 0..2) {
         $item = [ComboBoxItem]::new(); $item.Content = $n.ToString()
         $cb.Items.Add($item) | Out-Null
     }
     $cb.SelectedIndex = $Default
-    $row       = [StackPanel]::new(); $row.Orientation = 'Horizontal'; $row.Spacing = 6
+    $row = [StackPanel]::new(); $row.Orientation = 'Horizontal'; $row.Spacing = 6
     $row.Children.Add($lbl); $row.Children.Add($cb)
     return $row, $cb
 }
 
-$rowDate,    $cbDate    = Get-InfoLevelRow 'Date'        1
-$rowTZ,      $cbTZ      = Get-InfoLevelRow 'TimeZone'    2
-$rowUptime,  $cbUptime  = Get-InfoLevelRow 'Uptime'      2
-$rowPSHost,  $cbPSHost  = Get-InfoLevelRow 'PSHost'      2
+$rowDate, $cbDate = Get-InfoLevelRow 'Date' 1
+$rowTZ, $cbTZ = Get-InfoLevelRow 'TimeZone' 2
+$rowUptime, $cbUptime = Get-InfoLevelRow 'Uptime' 2
+$rowPSHost, $cbPSHost = Get-InfoLevelRow 'PSHost' 2
 $rowProcess, $cbProcess = Get-InfoLevelRow 'ProcessInfo' 1
-$syncHash.CbDate    = $cbDate
-$syncHash.CbTZ      = $cbTZ
-$syncHash.CbUptime  = $cbUptime
-$syncHash.CbPSHost  = $cbPSHost
+$syncHash.CbDate = $cbDate
+$syncHash.CbTZ = $cbTZ
+$syncHash.CbUptime = $cbUptime
+$syncHash.CbPSHost = $cbPSHost
 $syncHash.CbProcess = $cbProcess
 
-$gridInfo = [UniformGrid]::new()
-$gridInfo.Columns = 2
-$gridInfo.Children.Add($rowDate)    | Out-Null
-$gridInfo.Children.Add($rowTZ)      | Out-Null
-$gridInfo.Children.Add($rowUptime)  | Out-Null
-$gridInfo.Children.Add($rowPSHost)  | Out-Null
+$gridInfo = [StackPanel]::new()
+$gridInfo.Spacing = 6
+$gridInfo.Children.Add($rowDate) | Out-Null
+$gridInfo.Children.Add($rowTZ) | Out-Null
+$gridInfo.Children.Add($rowUptime) | Out-Null
+$gridInfo.Children.Add($rowPSHost) | Out-Null
 $gridInfo.Children.Add($rowProcess) | Out-Null
 
 $panelInfo = [StackPanel]::new(); $panelInfo.Spacing = 6
@@ -323,76 +323,76 @@ $panelInfo.Children.Add($gridInfo)
 # ===========================================================================
 # -- PROGRESS & LOG ----------------------------------------------------------
 # ===========================================================================
-$progressBar              = [ProgressBar]::new()
+$progressBar = [ProgressBar]::new()
 $progressBar.IsIndeterminate = $true
-$progressBar.IsVisible    = $false
-$progressBar.Height       = 6
-$syncHash.ProgressBar     = $progressBar
+$progressBar.IsVisible = $false
+$progressBar.Height = 6
+$syncHash.ProgressBar = $progressBar
 
-$logBox               = [TextBox]::new()
-$logBox.IsReadOnly    = $true
+$logBox = [TextBox]::new()
+$logBox.IsReadOnly = $true
 $logBox.AcceptsReturn = $true
-$logBox.Height        = 120
-$logBox.FontFamily    = 'Courier New'
-$logBox.FontSize      = 11
-$logBox.Text          = ''
-$syncHash.LogBox      = $logBox
+$logBox.Height = 120
+$logBox.FontFamily = 'Courier New'
+$logBox.FontSize = 11
+$logBox.Text = ''
+$syncHash.LogBox = $logBox
 
-$logScroll            = [ScrollViewer]::new()
-$logScroll.Height     = 120
-$logScroll.Content    = $logBox
-$syncHash.LogScroll   = $logScroll
+$logScroll = [ScrollViewer]::new()
+$logScroll.Height = 120
+$logScroll.Content = $logBox
+$syncHash.LogScroll = $logScroll
 
 # ===========================================================================
 # -- GENERATE BUTTON ---------------------------------------------------------
 # ===========================================================================
-$btnGenerate                       = [Button]::new()
-$btnGenerate.Content               = 'Generate Report'
-$btnGenerate.HorizontalAlignment   = 'Stretch'
+$btnGenerate = [Button]::new()
+$btnGenerate.Content = 'Generate Report'
+$btnGenerate.HorizontalAlignment = 'Stretch'
 $btnGenerate.HorizontalContentAlignment = 'Center'
-$btnGenerate.Height                = 40
+$btnGenerate.Height = 40
 $btnGenerate.Classes.Add('accent')
-$syncHash.BtnGenerate              = $btnGenerate
+$syncHash.BtnGenerate = $btnGenerate
 
-$lblStatus        = [TextBlock]::new()
-$lblStatus.Text   = 'Ready.'
+$lblStatus = [TextBlock]::new()
+$lblStatus.Text = 'Ready.'
 $lblStatus.Margin = [Thickness]::new(0, 4, 0, 0)
 $syncHash.LblStatus = $lblStatus
 
 # ---------------------------------------------------------------------------
 # Generate button click - runs on RunspacePoolAsyncUI so the UI stays alive
 # ---------------------------------------------------------------------------
-$generateCallback                          = [EventCallback]::new()
-$generateCallback.RunspaceMode             = 'RunspacePoolAsyncUI'
+$generateCallback = [EventCallback]::new()
+$generateCallback.RunspaceMode = 'RunspacePoolAsyncUI'
 $generateCallback.DisabledControlsWhileProcessing = $btnGenerate
-$generateCallback.ArgumentList             = $syncHash
+$generateCallback.ArgumentList = $syncHash
 
 $generateCallback.ScriptBlock = {
     param ($syncHash)
 
     # ---- Collect values from UI ----------------------------------------
-    $target      = $syncHash.TxtTarget.Text.Trim()
-    $outFolder   = $syncHash.TxtFolder.Text.Trim()
-    $reportName  = $syncHash.TxtName.Text.Trim()
-    $language    = ($syncHash.CbLang.SelectedItem).Content
+    $target = $syncHash.TxtTarget.Text.Trim()
+    $outFolder = $syncHash.TxtFolder.Text.Trim()
+    $reportName = $syncHash.TxtName.Text.Trim()
+    $language = ($syncHash.CbLang.SelectedItem).Content
 
     $formats = @()
-    if ($syncHash.ChkHtml.IsChecked)  { $formats += 'Html'  }
-    if ($syncHash.ChkWord.IsChecked)  { $formats += 'Word'  }
-    if ($syncHash.ChkText.IsChecked)  { $formats += 'Text'  }
+    if ($syncHash.ChkHtml.IsChecked) { $formats += 'Html' }
+    if ($syncHash.ChkWord.IsChecked) { $formats += 'Word' }
+    if ($syncHash.ChkText.IsChecked) { $formats += 'Text' }
     if ($syncHash.ChkExcel.IsChecked) { $formats += 'Excel' }
 
-    $useTimestamp  = [bool]$syncHash.ChkTimestamp.IsChecked
-    $useHealth     = [bool]$syncHash.ChkHealth.IsChecked
-    $diagTheme     = ($syncHash.CbTheme.SelectedItem).Content
+    $useTimestamp = [bool]$syncHash.ChkTimestamp.IsChecked
+    $useHealth = [bool]$syncHash.ChkHealth.IsChecked
+    $diagTheme = ($syncHash.CbTheme.SelectedItem).Content
 
-    $infoDate    = [int]($syncHash.CbDate.SelectedItem).Content
-    $infoTZ      = [int]($syncHash.CbTZ.SelectedItem).Content
-    $infoUptime  = [int]($syncHash.CbUptime.SelectedItem).Content
-    $infoPSHost  = [int]($syncHash.CbPSHost.SelectedItem).Content
+    $infoDate = [int]($syncHash.CbDate.SelectedItem).Content
+    $infoTZ = [int]($syncHash.CbTZ.SelectedItem).Content
+    $infoUptime = [int]($syncHash.CbUptime.SelectedItem).Content
+    $infoPSHost = [int]($syncHash.CbPSHost.SelectedItem).Content
     $infoProcess = [int]($syncHash.CbProcess.SelectedItem).Content
-    $enableDiag  = [bool]$syncHash.ChkDiagrams.IsChecked
-    $exportDiag  = [bool]$syncHash.ChkExportDiag.IsChecked
+    $enableDiag = [bool]$syncHash.ChkDiagrams.IsChecked
+    $exportDiag = [bool]$syncHash.ChkExportDiag.IsChecked
 
     # ---- Validate -------------------------------------------------------
     if (-not $target) {
@@ -410,10 +410,10 @@ $generateCallback.ScriptBlock = {
 
     # ---- Show progress --------------------------------------------------
     $syncHash.ProgressBar.IsVisible = $true
-    $syncHash.LblStatus.Text        = 'Generating report...'
-    $syncHash.LogBox.Text           = ''
+    $syncHash.LblStatus.Text = 'Generating report...'
+    $syncHash.LogBox.Text = ''
 
-    $ts  = (Get-Date).ToString('HH:mm:ss')
+    $ts = (Get-Date).ToString('HH:mm:ss')
     $syncHash.LogBox.Text += "[$ts] Starting report generation for target '$target'...`n"
     $syncHash.LogBox.Text += "[$ts] Output folder : $outFolder`n"
     $syncHash.LogBox.Text += "[$ts] Format(s)     : $($formats -join ', ')`n"
@@ -422,34 +422,34 @@ $generateCallback.ScriptBlock = {
 
     # ---- Build a temporary JSON config file ----------------------------
     $configObj = [ordered]@{
-        Report    = [ordered]@{
-            Name                = $reportName
-            Version             = '1.0'
-            Status              = 'Released'
-            Language            = $language
-            ShowCoverPageImage  = $true
+        Report = [ordered]@{
+            Name = $reportName
+            Version = '1.0'
+            Status = 'Released'
+            Language = $language
+            ShowCoverPageImage = $true
             ShowTableOfContents = $true
-            ShowHeaderFooter    = $true
-            ShowTableCaptions   = $true
+            ShowHeaderFooter = $true
+            ShowTableCaptions = $true
         }
-        Options   = [ordered]@{
-            EnableDiagrams          = $enableDiag
-            EnableDiagramDebug      = $false
-            EnableDiagramMainLogo   = $false
-            DiagramTheme            = $diagTheme
-            DiagramWaterMark        = ''
-            ExportDiagrams          = $exportDiag
-            ExportDiagramsFormat    = @('png')
-            EnableDiagramSignature  = $false
-            DiagramColumnSize       = 4
-            SignatureAuthorName     = ''
-            SignatureCompanyName    = ''
+        Options = [ordered]@{
+            EnableDiagrams = $enableDiag
+            EnableDiagramDebug = $false
+            EnableDiagramMainLogo = $false
+            DiagramTheme = $diagTheme
+            DiagramWaterMark = ''
+            ExportDiagrams = $exportDiag
+            ExportDiagramsFormat = @('png')
+            EnableDiagramSignature = $false
+            DiagramColumnSize = 4
+            SignatureAuthorName = ''
+            SignatureCompanyName = ''
         }
         InfoLevel = [ordered]@{
-            Date        = $infoDate
-            TimeZone    = $infoTZ
-            Uptime      = $infoUptime
-            PSHost      = $infoPSHost
+            Date = $infoDate
+            TimeZone = $infoTZ
+            Uptime = $infoUptime
+            PSHost = $infoPSHost
             ProcessInfo = $infoProcess
         }
         HealthCheck = [ordered]@{}
@@ -466,16 +466,16 @@ $generateCallback.ScriptBlock = {
 
     # ---- Assemble New-AsBuiltReport parameters -------------------------
     $abrParams = @{
-        Report               = 'System.Resources'
-        Target               = $target
-        Format               = $formats
-        OutputFolderPath     = $outFolder
+        Report = 'System.Resources'
+        Target = $target
+        Format = $formats
+        OutputFolderPath = $outFolder
         ReportConfigFilePath = $tmpConfig
-        ReportLanguage       = $language
-        ErrorAction          = 'Stop'
+        ReportLanguage = $language
+        ErrorAction = 'Stop'
     }
-    if ($useTimestamp) { $abrParams['Timestamp']         = $true }
-    if ($useHealth)    { $abrParams['EnableHealthCheck'] = $true }
+    if ($useTimestamp) { $abrParams['Timestamp'] = $true }
+    if ($useHealth) { $abrParams['EnableHealthCheck'] = $true }
 
     # ---- Run the report -------------------------------------------------
     try {
@@ -485,18 +485,18 @@ $generateCallback.ScriptBlock = {
 
         New-AsBuiltReport @abrParams 4>&1 | ForEach-Object {
             $line = $_.ToString()
-            $ts2  = (Get-Date).ToString('HH:mm:ss')
+            $ts2 = (Get-Date).ToString('HH:mm:ss')
             $syncHash.LogBox.Text += "[$ts2] $line`n"
             $syncHash.LogScroll.ScrollToEnd()
         }
 
         $ts = (Get-Date).ToString('HH:mm:ss')
-        $syncHash.LogBox.Text    += "[$ts] Report generation complete.`n"
-        $syncHash.LblStatus.Text  = "Done! Report saved to: $outFolder"
+        $syncHash.LogBox.Text += "[$ts] Report generation complete.`n"
+        $syncHash.LblStatus.Text = "Done! Report saved to: $outFolder"
     } catch {
         $ts = (Get-Date).ToString('HH:mm:ss')
-        $syncHash.LogBox.Text    += "[$ts] ERROR: $_`n"
-        $syncHash.LblStatus.Text  = "ERROR: $($_.Exception.Message)"
+        $syncHash.LogBox.Text += "[$ts] ERROR: $_`n"
+        $syncHash.LblStatus.Text = "ERROR: $($_.Exception.Message)"
     } finally {
         # Clean up temp config
         if (Test-Path $tmpConfig) { Remove-Item $tmpConfig -Force -ErrorAction SilentlyContinue }
@@ -510,8 +510,8 @@ $btnGenerate.AddClick($generateCallback)
 # ===========================================================================
 # -- LAYOUT - stack everything into a ScrollViewer ---------------------------
 # ===========================================================================
-$mainPanel         = [StackPanel]::new()
-$mainPanel.Margin  = [Thickness]::new(20)
+$mainPanel = [StackPanel]::new()
+$mainPanel.Margin = [Thickness]::new(20)
 $mainPanel.Spacing = 4
 $mainPanel.Children.Add($panelConfig)
 $mainPanel.Children.Add($panelFormats)
@@ -522,7 +522,7 @@ $mainPanel.Children.Add($btnGenerate)
 $mainPanel.Children.Add($lblStatus)
 $mainPanel.Children.Add($logScroll)
 
-$scroll         = [ScrollViewer]::new()
+$scroll = [ScrollViewer]::new()
 $scroll.Content = $mainPanel
 
 $win.Content = $scroll
