@@ -6,3 +6,7 @@
   - [X] Memory usage charts
 - [x] Add support for diagrams
   - [x] Process diagrams
+- [x] Design a GUI using Avalonia UI (AvaloniaUIShell) to generate the report
+  - [x] Avalonia UI window with report configuration, format, options and info-level controls
+  - [x] Background-thread report generation (UI stays responsive)
+  - [x] Start-AsBuiltReportGui exported function

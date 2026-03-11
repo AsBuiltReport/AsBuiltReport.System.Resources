@@ -204,6 +204,53 @@ The **Healthcheck** schema is used to toggle health checks on or off.
 
 No health checks are currently available for this report.
 
+## :desktop_computer: Graphical User Interface (GUI)
+
+A cross-platform graphical launcher is included in the module. It is powered by
+[AvaloniaUIShell](https://github.com/mdgrs-mei/AvaloniaUIShell) and requires
+**PowerShell 7.4 or newer**.
+
+### GUI Requirements
+
+| Requirement | Version |
+| ----------- | ------- |
+| PowerShell  | 7.4+    |
+| AvaloniaUIShell | latest |
+
+### Installing AvaloniaUIShell
+
+```powershell
+# Install the AvaloniaUIShell module
+Install-PSResource -Name AvaloniaUIShell
+
+# macOS / Linux only – add execute permission to the server binary:
+Enable-AUIExecution
+```
+
+### Launching the GUI
+
+```powershell
+# Option A – via the exported module function (recommended):
+Import-Module AsBuiltReport.System.Resources
+Start-AsBuiltReportGui
+
+# Option B – run the script directly:
+& "$((Get-Module AsBuiltReport.System.Resources).ModuleBase)\Src\GUI\Invoke-AsBuiltReportGui.ps1"
+```
+
+The GUI window lets you configure every common report parameter through a
+point-and-click interface:
+
+| Section | Controls |
+| ------- | -------- |
+| **Report Configuration** | Target, Output Folder (with folder browser), Report Name, Language |
+| **Output Formats** | HTML · Word · Text · Excel checkboxes |
+| **Options** | Timestamp · HealthCheck · Enable Diagrams · Export Diagrams · Diagram Theme |
+| **Info Level** | Per-section selectors (0 = Disabled, 1 = Summary, 2 = Detailed) for Date, TimeZone, Uptime, PSHost, ProcessInfo |
+| **Generate** | Progress bar · scrollable log showing live output |
+
+Report generation runs on a background thread so the window stays fully responsive.
+
 ## :computer: Examples
 
 The following examples demonstrate how to generate a System Resources As Built Report.
