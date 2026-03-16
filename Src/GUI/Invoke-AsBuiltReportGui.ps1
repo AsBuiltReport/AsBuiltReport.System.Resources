@@ -8,8 +8,9 @@
 
     Sections of the GUI:
 
-        Report Configuration  - Target, Output Folder, Report Name, Language
-        Output Formats        - Html / Word / Text / Excel checkboxes
+        Report Configuration  - Target, Output Folder, Report Name, Language,
+                                AsBuiltReport Config File (optional)
+        Output Formats        - Html / Word / Text checkboxes
         Options               - Timestamp, HealthCheck, Diagrams, Export Diagrams,
                                 Diagram Theme
         Info Level            - Per-section detail level (0 = Disabled, 1 = Summary,
@@ -17,6 +18,11 @@
                                 ProcessInfo
         Generate              - Progress bar + scrollable log; report runs on a
                                 background thread so the UI stays responsive.
+
+    An embedded "Generate Config..." wizard mirrors New-AsBuiltConfig: it collects
+    Report Author, Company details (Full Name, Short Name, Contact, Email, Phone,
+    Address) and optional SMTP/Email settings, then writes a JSON file that can be
+    passed to New-AsBuiltReport via -AsBuiltConfigFilePath.
 
 .NOTES
     Requirements:
@@ -207,12 +213,253 @@ $rowLang.Orientation = 'Horizontal'; $rowLang.Spacing = 8
 $rowLang.Children.Add($lblLang)
 $rowLang.Children.Add($cbLang)
 
+# AsBuiltReport Config File (optional - passed via -AsBuiltConfigFilePath)
+$lblAbrConfig = [TextBlock]::new(); $lblAbrConfig.Text = 'AsBuiltReport Config:'
+$lblAbrConfig.Width = 130; $lblAbrConfig.VerticalAlignment = 'Center'
+$txtAbrConfig = [TextBox]::new()
+$txtAbrConfig.Width = 220
+$txtAbrConfig.Watermark = 'Optional - leave blank to skip'
+$syncHash.TxtAbrConfig = $txtAbrConfig
+
+$btnBrowseAbrConfig = [Button]::new()
+$btnBrowseAbrConfig.Content = 'Browse'
+$btnBrowseAbrConfig.Width = 70
+$btnBrowseAbrConfig.AddClick({
+    if ($IsWindows) {
+        try {
+            Add-Type -AssemblyName System.Windows.Forms -ErrorAction Stop
+            $dlg = [System.Windows.Forms.OpenFileDialog]::new()
+            $dlg.Title = 'Select AsBuiltReport Config File'
+            $dlg.Filter = 'JSON files (*.json)|*.json|All files (*.*)|*.*'
+            if ($dlg.ShowDialog() -eq 'OK') {
+                $syncHash.TxtAbrConfig.Text = $dlg.FileName
+            }
+        } catch {
+            Add-LogLine "File browser unavailable: $_. Please type the path directly."
+        }
+    } else {
+        Add-LogLine 'File browser not available on this platform - type the path directly.'
+    }
+})
+
+# "Generate Config..." button - opens a sub-window wizard (mirrors New-AsBuiltConfig)
+$btnGenAbrConfig = [Button]::new()
+$btnGenAbrConfig.Content = 'Generate Config...'
+$btnGenAbrConfig.Width = 120
+$btnGenAbrConfig.AddClick({
+    # Collect sub-window field values via a synchronized hashtable
+    $cfgSync = [Hashtable]::Synchronized(@{})
+
+    $cfgWin = [Window]::new()
+    $cfgWin.Title = 'Generate AsBuiltReport Config File'
+    $cfgWin.Width = 520
+    $cfgWin.Height = 640
+    $cfgWin.WindowStartupLocation = 'CenterScreen'
+    $cfgWin.CanMaximize = $false
+
+    # ---- inner helper: label + textbox row ----
+    $makeCfgRow = {
+        param([string]$LabelText, [string]$WatermarkText = '', [string]$DefaultValue = '')
+        $lbl = [TextBlock]::new(); $lbl.Text = $LabelText
+        $lbl.Width = 130; $lbl.VerticalAlignment = 'Center'
+        $txt = [TextBox]::new(); $txt.Width = 310
+        if ($WatermarkText) { $txt.Watermark = $WatermarkText }
+        if ($DefaultValue)  { $txt.Text = $DefaultValue }
+        $row = [StackPanel]::new()
+        $row.Orientation = 'Horizontal'; $row.Spacing = 8
+        $row.Children.Add($lbl) | Out-Null
+        $row.Children.Add($txt) | Out-Null
+        return $row, $txt
+    }
+
+    # ---- Report info ----
+    $rowAuthor,       $txtAuthor       = & $makeCfgRow 'Report Author:' '' ([System.Environment]::UserName)
+    $cfgSync.TxtAuthor = $txtAuthor
+
+    # ---- Company ----
+    $rowCompanyFull,  $txtCompanyFull  = & $makeCfgRow 'Company Full Name:' 'e.g. Acme Corporation'
+    $rowCompanyShort, $txtCompanyShort = & $makeCfgRow 'Company Short Name:' 'e.g. Acme'
+    $rowContact,      $txtContact      = & $makeCfgRow 'Contact Name:'
+    $rowCompanyEmail, $txtCompanyEmail = & $makeCfgRow 'Contact Email:'
+    $rowPhone,        $txtPhone        = & $makeCfgRow 'Phone Number:'
+    $rowAddress,      $txtAddress      = & $makeCfgRow 'Address:'
+    $cfgSync.TxtCompanyFull  = $txtCompanyFull
+    $cfgSync.TxtCompanyShort = $txtCompanyShort
+    $cfgSync.TxtContact      = $txtContact
+    $cfgSync.TxtCompanyEmail = $txtCompanyEmail
+    $cfgSync.TxtPhone        = $txtPhone
+    $cfgSync.TxtAddress      = $txtAddress
+
+    # ---- SMTP / Email (optional) ----
+    $rowMailServer, $txtMailServer = & $makeCfgRow 'SMTP Server:' 'e.g. smtp.office365.com'
+    $rowMailPort,   $txtMailPort   = & $makeCfgRow 'SMTP Port:' '25 or 587' '25'
+    $rowMailFrom,   $txtMailFrom   = & $makeCfgRow 'From Address:'
+    $rowMailTo,     $txtMailTo     = & $makeCfgRow 'To Address(es):' 'Comma-separated'
+    $cfgSync.TxtMailServer = $txtMailServer
+    $cfgSync.TxtMailPort   = $txtMailPort
+    $cfgSync.TxtMailFrom   = $txtMailFrom
+    $cfgSync.TxtMailTo     = $txtMailTo
+
+    $chkMailSSL   = [CheckBox]::new(); $chkMailSSL.Content   = 'Use SSL/TLS'
+    $chkMailCreds = [CheckBox]::new(); $chkMailCreds.Content = 'Requires Credentials'
+    $cfgSync.ChkMailSSL   = $chkMailSSL
+    $cfgSync.ChkMailCreds = $chkMailCreds
+    $rowMailChk = [StackPanel]::new()
+    $rowMailChk.Orientation = 'Horizontal'; $rowMailChk.Spacing = 16
+    $rowMailChk.Margin = [Thickness]::new(138, 0, 0, 0)
+    $rowMailChk.Children.Add($chkMailSSL)   | Out-Null
+    $rowMailChk.Children.Add($chkMailCreds) | Out-Null
+
+    # ---- Save path ----
+    $lblSavePath = [TextBlock]::new(); $lblSavePath.Text = 'Save Config To:'
+    $lblSavePath.Width = 130; $lblSavePath.VerticalAlignment = 'Center'
+    $defaultConfigDir = Join-Path $HOME 'AsBuiltReport'
+    $defaultConfigFile = Join-Path $defaultConfigDir 'AsBuiltReport.json'
+    $txtSavePath = [TextBox]::new(); $txtSavePath.Width = 230; $txtSavePath.Text = $defaultConfigFile
+    $cfgSync.TxtSavePath = $txtSavePath
+
+    $btnBrowseSave = [Button]::new(); $btnBrowseSave.Content = 'Browse'; $btnBrowseSave.Width = 70
+    $btnBrowseSave.AddClick({
+        if ($IsWindows) {
+            try {
+                Add-Type -AssemblyName System.Windows.Forms -ErrorAction Stop
+                $sfd = [System.Windows.Forms.SaveFileDialog]::new()
+                $sfd.Title = 'Save AsBuiltReport Config As'
+                $sfd.Filter = 'JSON files (*.json)|*.json|All files (*.*)|*.*'
+                $sfd.FileName = 'AsBuiltReport.json'
+                if ($sfd.ShowDialog() -eq 'OK') {
+                    $cfgSync.TxtSavePath.Text = $sfd.FileName
+                }
+            } catch {
+                Add-LogLine "File browser unavailable. Please type the save path directly."
+            }
+        }
+    })
+
+    $rowSavePath = [StackPanel]::new()
+    $rowSavePath.Orientation = 'Horizontal'; $rowSavePath.Spacing = 8
+    $rowSavePath.Children.Add($lblSavePath)  | Out-Null
+    $rowSavePath.Children.Add($txtSavePath)  | Out-Null
+    $rowSavePath.Children.Add($btnBrowseSave) | Out-Null
+
+    # ---- Status label (inside sub-window) ----
+    $lblCfgStatus = [TextBlock]::new(); $lblCfgStatus.Text = ''
+    $lblCfgStatus.Margin = [Thickness]::new(0, 4, 0, 0)
+    $cfgSync.LblCfgStatus = $lblCfgStatus
+
+    # ---- Save button ----
+    $btnSaveCfg = [Button]::new()
+    $btnSaveCfg.Content = 'Save Config'
+    $btnSaveCfg.HorizontalAlignment = 'Stretch'
+    $btnSaveCfg.HorizontalContentAlignment = 'Center'
+    $btnSaveCfg.Height = 36
+    $btnSaveCfg.Classes.Add('accent')
+
+    $btnSaveCfg.AddClick({
+        $savePath = $cfgSync.TxtSavePath.Text.Trim()
+        if (-not $savePath) {
+            $cfgSync.LblCfgStatus.Text = '[WARNING] Please specify a save path.'
+            return
+        }
+
+        # Build the config object matching New-AsBuiltConfig's schema
+        $toField = $cfgSync.TxtMailTo.Text.Trim()
+        $toArray  = if ($toField) {
+            $toField -split '\s*,\s*' | Where-Object { $_ -ne '' }
+        } else { @() }
+
+        $portVal = 25
+        [void][int]::TryParse($cfgSync.TxtMailPort.Text.Trim(), [ref]$portVal)
+
+        $cfgObj = [ordered]@{
+            Report  = [ordered]@{
+                Author = $cfgSync.TxtAuthor.Text.Trim()
+            }
+            Company = [ordered]@{
+                FullName  = $cfgSync.TxtCompanyFull.Text.Trim()
+                ShortName = $cfgSync.TxtCompanyShort.Text.Trim()
+                Contact   = $cfgSync.TxtContact.Text.Trim()
+                Email     = $cfgSync.TxtCompanyEmail.Text.Trim()
+                Phone     = $cfgSync.TxtPhone.Text.Trim()
+                Address   = $cfgSync.TxtAddress.Text.Trim()
+            }
+            Email   = [ordered]@{
+                Server      = $cfgSync.TxtMailServer.Text.Trim()
+                Port        = $portVal
+                UseSSL      = [bool]$cfgSync.ChkMailSSL.IsChecked
+                Credentials = [bool]$cfgSync.ChkMailCreds.IsChecked
+                From        = $cfgSync.TxtMailFrom.Text.Trim()
+                To          = $toArray
+                Body        = ''
+            }
+        }
+
+        try {
+            $saveDir = Split-Path $savePath -Parent
+            if ($saveDir -and -not (Test-Path $saveDir)) {
+                New-Item -Path $saveDir -ItemType Directory -Force | Out-Null
+            }
+            $cfgObj | ConvertTo-Json -Depth 10 | Set-Content -Path $savePath -Encoding UTF8
+            # Propagate path back to the main window's AsBuiltConfig field
+            $syncHash.TxtAbrConfig.Text = $savePath
+            $cfgWin.Close()
+        } catch {
+            $cfgSync.LblCfgStatus.Text = "ERROR: $_"
+        }
+    })
+
+    # ---- Sub-window layout ----
+    $cfgPanel = [StackPanel]::new()
+    $cfgPanel.Margin = [Thickness]::new(20)
+    $cfgPanel.Spacing = 6
+
+    # Section: Report
+    $cfgPanel.Children.Add((Get-SectionHeader 'Report Information')) | Out-Null
+    $cfgPanel.Children.Add($rowAuthor)        | Out-Null
+
+    # Section: Company
+    $cfgPanel.Children.Add((Get-SectionHeader 'Company Information')) | Out-Null
+    $cfgPanel.Children.Add($rowCompanyFull)   | Out-Null
+    $cfgPanel.Children.Add($rowCompanyShort)  | Out-Null
+    $cfgPanel.Children.Add($rowContact)       | Out-Null
+    $cfgPanel.Children.Add($rowCompanyEmail)  | Out-Null
+    $cfgPanel.Children.Add($rowPhone)         | Out-Null
+    $cfgPanel.Children.Add($rowAddress)       | Out-Null
+
+    # Section: Email/SMTP (optional)
+    $cfgPanel.Children.Add((Get-SectionHeader 'Email / SMTP Settings (Optional)')) | Out-Null
+    $cfgPanel.Children.Add($rowMailServer)    | Out-Null
+    $cfgPanel.Children.Add($rowMailPort)      | Out-Null
+    $cfgPanel.Children.Add($rowMailFrom)      | Out-Null
+    $cfgPanel.Children.Add($rowMailTo)        | Out-Null
+    $cfgPanel.Children.Add($rowMailChk)       | Out-Null
+
+    # Section: Save
+    $cfgPanel.Children.Add((Get-SectionHeader 'Save Location')) | Out-Null
+    $cfgPanel.Children.Add($rowSavePath)      | Out-Null
+    $cfgPanel.Children.Add($btnSaveCfg)       | Out-Null
+    $cfgPanel.Children.Add($lblCfgStatus)     | Out-Null
+
+    $cfgScroll = [ScrollViewer]::new()
+    $cfgScroll.Content = $cfgPanel
+    $cfgWin.Content = $cfgScroll
+    $cfgWin.Show()
+})
+
+$rowAbrConfig = [StackPanel]::new()
+$rowAbrConfig.Orientation = 'Horizontal'; $rowAbrConfig.Spacing = 8
+$rowAbrConfig.Children.Add($lblAbrConfig)     | Out-Null
+$rowAbrConfig.Children.Add($txtAbrConfig)     | Out-Null
+$rowAbrConfig.Children.Add($btnBrowseAbrConfig) | Out-Null
+$rowAbrConfig.Children.Add($btnGenAbrConfig)  | Out-Null
+
 $panelConfig = [StackPanel]::new(); $panelConfig.Spacing = 6
 $panelConfig.Children.Add((Get-SectionHeader 'Report Configuration'))
 $panelConfig.Children.Add($rowTarget)
 $panelConfig.Children.Add($rowFolder)
 $panelConfig.Children.Add($rowName)
 $panelConfig.Children.Add($rowLang)
+$panelConfig.Children.Add($rowAbrConfig)
 
 # ===========================================================================
 # -- OUTPUT FORMATS ----------------------------------------------------------
@@ -220,18 +467,15 @@ $panelConfig.Children.Add($rowLang)
 $chkHtml = [CheckBox]::new(); $chkHtml.Content = 'HTML'; $chkHtml.IsChecked = $true
 $chkWord = [CheckBox]::new(); $chkWord.Content = 'Word'; $chkWord.IsChecked = $false
 $chkText = [CheckBox]::new(); $chkText.Content = 'Text'; $chkText.IsChecked = $false
-$chkExcel = [CheckBox]::new(); $chkExcel.Content = 'Excel'; $chkExcel.IsChecked = $false
 $syncHash.ChkHtml = $chkHtml
 $syncHash.ChkWord = $chkWord
 $syncHash.ChkText = $chkText
-$syncHash.ChkExcel = $chkExcel
 
 $rowFormats = [StackPanel]::new()
 $rowFormats.Orientation = 'Horizontal'; $rowFormats.Spacing = 18
 $rowFormats.Children.Add($chkHtml)
 $rowFormats.Children.Add($chkWord)
 $rowFormats.Children.Add($chkText)
-$rowFormats.Children.Add($chkExcel)
 
 $panelFormats = [StackPanel]::new(); $panelFormats.Spacing = 6
 $panelFormats.Children.Add((Get-SectionHeader 'Output Formats'))
@@ -380,7 +624,6 @@ $generateCallback.ScriptBlock = {
     if ($syncHash.ChkHtml.IsChecked) { $formats += 'Html' }
     if ($syncHash.ChkWord.IsChecked) { $formats += 'Word' }
     if ($syncHash.ChkText.IsChecked) { $formats += 'Text' }
-    if ($syncHash.ChkExcel.IsChecked) { $formats += 'Excel' }
 
     $useTimestamp = [bool]$syncHash.ChkTimestamp.IsChecked
     $useHealth = [bool]$syncHash.ChkHealth.IsChecked
@@ -466,16 +709,28 @@ $generateCallback.ScriptBlock = {
 
     # ---- Assemble New-AsBuiltReport parameters -------------------------
     $abrParams = @{
-        Report = 'System.Resources'
-        Target = $target
-        Format = $formats
-        OutputFolderPath = $outFolder
+        Report               = 'System.Resources'
+        Target               = $target
+        Format               = $formats
+        OutputFolderPath     = $outFolder
         ReportConfigFilePath = $tmpConfig
-        ReportLanguage = $language
-        ErrorAction = 'Stop'
+        ReportLanguage       = $language
+        ErrorAction          = 'Stop'
     }
-    if ($useTimestamp) { $abrParams['Timestamp'] = $true }
-    if ($useHealth) { $abrParams['EnableHealthCheck'] = $true }
+    if ($useTimestamp) { $abrParams['Timestamp']           = $true }
+    if ($useHealth)    { $abrParams['EnableHealthCheck']   = $true }
+
+    $abrConfigPath = $syncHash.TxtAbrConfig.Text.Trim()
+    if ($abrConfigPath) {
+        if (Test-Path $abrConfigPath) {
+            $abrParams['AsBuiltConfigFilePath'] = $abrConfigPath
+            $ts = (Get-Date).ToString('HH:mm:ss')
+            $syncHash.LogBox.Text += "[$ts] AsBuiltReport config : $abrConfigPath`n"
+        } else {
+            $ts = (Get-Date).ToString('HH:mm:ss')
+            $syncHash.LogBox.Text += "[$ts] [WARNING] AsBuiltReport config not found, skipping: $abrConfigPath`n"
+        }
+    }
 
     # ---- Run the report -------------------------------------------------
     try {

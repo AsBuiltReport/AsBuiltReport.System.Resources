@@ -13,11 +13,14 @@ function Start-AsBuiltReportGui {
             - Target system name
             - Output folder and report name
             - Report language
-            - Output format (Html / Word / Text / Excel)
+            - Output format (Html / Word / Text)
             - Timestamp and HealthCheck toggles
             - Diagram options (Enable, Export, Theme)
             - Per-section InfoLevel (0-2) for Date, TimeZone, Uptime, PSHost,
               and ProcessInfo
+            - Optional AsBuiltReport Config File (-AsBuiltConfigFilePath), with
+              a built-in wizard that mirrors New-AsBuiltConfig to collect author,
+              company and SMTP/email details and save them as a JSON file
 
         Report generation runs on a background thread, so the window stays fully
         responsive while the report is being produced.

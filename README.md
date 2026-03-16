@@ -243,11 +243,16 @@ point-and-click interface:
 
 | Section | Controls |
 | ------- | -------- |
-| **Report Configuration** | Target, Output Folder (with folder browser), Report Name, Language |
-| **Output Formats** | HTML · Word · Text · Excel checkboxes |
+| **Report Configuration** | Target, Output Folder (with folder browser), Report Name, Language, AsBuiltReport Config File (optional — browse or generate) |
+| **Output Formats** | HTML · Word · Text checkboxes |
 | **Options** | Timestamp · HealthCheck · Enable Diagrams · Export Diagrams · Diagram Theme |
 | **Info Level** | Per-section selectors (0 = Disabled, 1 = Summary, 2 = Detailed) for Date, TimeZone, Uptime, PSHost, ProcessInfo |
 | **Generate** | Progress bar · scrollable log showing live output |
+
+The **Generate Config...** button opens a wizard that mirrors `New-AsBuiltConfig`:
+it collects Report Author, Company details (Full Name, Short Name, Contact, Email,
+Phone, Address) and optional SMTP/Email settings, then saves a JSON file that is
+automatically passed to `New-AsBuiltReport` via `-AsBuiltConfigFilePath`.
 
 Report generation runs on a background thread so the window stays fully responsive.
 
