@@ -38,7 +38,7 @@ function Get-AbrProcessDiagram {
         $diagram = Get-AbrProcessDiagram
         Export-AbrDiagram -DiagramObject $diagram -MainDiagramLabel 'Process Hierarchy Diagram' -FileName 'ProcessDiagram'
     .NOTES
-        Version:        0.1.2
+        Version:        0.1.3
         Author:         AsBuiltReport Community
         Twitter:        @AsBuiltReport
         Github:         AsBuiltReport
@@ -97,15 +97,15 @@ function Get-AbrProcessDiagram {
                 # Add the System node to the diagram. Add-DiaNodeIcon is a helper from the
                 # AsBuiltReport.Diagram module that renders a node with an icon image sourced
                 # from the $Images hashtable.
-                Add-DiaNodeIcon -Name 'System' -IconDebug $IconDebug -IconType 'Process' -ImagesObj $Images -NodeObject
+                Add-NodeIcon -Name 'System' -IconDebug $IconDebug -IconType 'Process' -ImagesObj $Images -NodeObject
 
                 # Add one node per top-5 process. Each node shows the process name (including PID)
                 # as well as additional info attributes for CPU and Memory usage.
-                $Process | ForEach-Object { Add-DiaNodeIcon -Name $_.Name -IconDebug $IconDebug -IconType 'Process' -ImagesObj $Images -NodeObject -AditionalInfo @{'CPU Usage' = $_.CPU; 'Memory Usage' = $_.MEM } }
+                $Process | ForEach-Object { Add-NodeIcon -Name $_.Name -IconDebug $IconDebug -IconType 'Process' -ImagesObj $Images -NodeObject -AditionalInfo @{'CPU Usage' = $_.CPU; 'Memory Usage' = $_.MEM } }
 
                 # Draw a dashed edge from the System node to each process node to represent the
                 # parent-child relationship. Edge colour and width follow the active theme.
-                $Process | ForEach-Object { Edge -From 'System' -To $_.Name -Attributes @{color = $Edgecolor; style = 'dashed'; penwidth = 1.5; } }
+                $Process | ForEach-Object { Add-NodeEdge -From 'System' -To $_.Name -EdgeStyle 'dashed' -EdgeColor $Edgecolor -EdgeThickness 2 }
             }
         } catch {
             Write-PScriboMessage -IsWarning $_.Exception.Message

@@ -40,7 +40,7 @@ function Get-AbrProcessInfo {
         # It is not designed to be called directly by end users.
         Get-AbrProcessInfo
     .NOTES
-        Version:        0.1.2
+        Version:        0.1.3
         Author:         AsBuiltReport Community
         Twitter:        @AsBuiltReport
         Github:         AsBuiltReport
@@ -152,7 +152,7 @@ function Get-AbrProcessInfo {
                         try {
                             $ProcessDiagram = Get-AbrProcessDiagram
                             if ($ProcessDiagram) {
-                                Export-AbrDiagram -DiagramObject $ProcessDiagram -MainDiagramLabel $reportTranslate.MainDiagramLabel -FileName 'AsBuiltReport.System.Resources.Cluster'
+                                Export-AbrDiagram -DiagramObject $ProcessDiagram -MainDiagramLabel $reportTranslate.MainDiagramLabel -Filename 'AsBuiltReport.System.Resources.ProcessDiagram'
                             } else {
                                 Write-PScriboMessage -IsWarning $reportTranslate.Unable
                             }

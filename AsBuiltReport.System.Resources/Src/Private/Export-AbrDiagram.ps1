@@ -44,9 +44,9 @@ function Export-AbrDiagram {
     .EXAMPLE
         # Typically called from within a report section function such as Get-AbrProcessInfo:
         $diagram = Get-AbrProcessDiagram
-        Export-AbrDiagram -DiagramObject $diagram -MainDiagramLabel 'Process Hierarchy Diagram' -FileName 'AsBuiltReport.System.Resources.Cluster'
+        Export-AbrDiagram -DiagramObject $diagram -MainDiagramLabel 'Process Hierarchy Diagram' -FileName 'AsBuiltReport.System.Resources'
     .NOTES
-        Version:        0.1.2
+        Version:        0.1.3
         Author:         AsBuiltReport Community
         Twitter:        @AsBuiltReport
         Github:         AsBuiltReport
@@ -77,7 +77,7 @@ function Export-AbrDiagram {
             # Resolve the icons directory relative to the module root so that icon images can
             # be embedded into diagram nodes by New-Diagrammer.
             $RootPath = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
-            [System.IO.FileInfo]$IconPath = Join-Path -Path $RootPath -ChildPath 'icons'
+            [System.IO.FileInfo]$IconPath = Join-Path -Path $RootPath -ChildPath 'Icons'
 
             # Build the core parameter set shared by all New-Diagrammer invocations.
             $DiagramParams = @{
@@ -144,7 +144,7 @@ function Export-AbrDiagram {
                     $Graph = $DiagramObject
                     if ($Graph) {
                         Write-PScriboMessage -Message "Saving $MainDiagramLabel diagram"
-                        $Diagram = New-Diagrammer @DiagramParams -InputObject $Graph
+                        $Diagram = New-AbrDiagram @DiagramParams -InputObject $Graph
                         if ($Diagram) {
                             foreach ($OutputFormat in $DiagramFormat) {
                                 Write-Information -MessageData "Saved '$($FileName).$($OutputFormat)' diagram to '$($OutputFolderPath)'." -InformationAction Continue
@@ -162,9 +162,9 @@ function Export-AbrDiagram {
                 $DiagramParams.Add('Format', 'base64')
 
                 $Graph = $DiagramObject
-                $Diagram = New-Diagrammer @DiagramParams -InputObject $Graph
+                $Diagram = New-AbrDiagram @DiagramParams -InputObject $Graph
                 if ($Diagram) {
-                    $BestAspectRatio = Get-DiaBestImageAspectRatio -GraphObj $Diagram -MaxWidth 600
+                    $BestAspectRatio = Get-BestImageAspectRatio -GraphObj $Diagram -MaxWidth 600
                     Section -Style Heading3 $MainDiagramLabel {
                         Image -Base64 $Diagram -Text "$MainDiagramLabel Diagram" -Width $BestAspectRatio.Width -Height $BestAspectRatio.Height -Align Center
                     }
