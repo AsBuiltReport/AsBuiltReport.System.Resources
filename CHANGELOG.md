@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bump AsBuiltReport.Diagram to version 1.0.5 to include latest diagramming features and improvements
 - Reorganize module structure - moved module files to AsBuiltReport.System.Resources/ subdirectory
 - Update zentered/bluesky-post-action to v0.4.0 for improved stability and performance
+- Enhance diagram aspect ratio handling in Export-AbrDiagram function
 
 ## [0.1.2] - 2026-02-22
 
