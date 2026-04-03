@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update zentered/bluesky-post-action to v0.4.0 for improved stability and performance
 - Enhance diagram aspect ratio handling in Export-AbrDiagram function
 - Update language resources for uptime monitoring and health check sections
+- Update Sample Files to reflect new features and changes
 
 ## [0.1.2] - 2026-02-22
 
