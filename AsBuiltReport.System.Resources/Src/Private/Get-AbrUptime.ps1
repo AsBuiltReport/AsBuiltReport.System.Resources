@@ -82,6 +82,10 @@ function Get-AbrUptime {
                             $SystemUptimeInfo += [PSCustomObject]$InObj
                         }
 
+                        if ($HealthCheck.Uptime) {
+                            $SystemUptimeInfo | Where-Object { $_.$($reportTranslate.Uptime) -lt 24 } | Set-Style -Style Warning -Property $($reportTranslate.Uptime)
+                        }
+
                         if ($InfoLevel.Uptime -ge 2) {
                             # InfoLevel 2: render each target as its own subsection with a list-style table.
                             Paragraph $reportTranslate.ParagraphDetail
@@ -96,6 +100,15 @@ function Get-AbrUptime {
                                         $TableParams['Caption'] = "- $($TableParams.Name)"
                                     }
                                     $UptimeInfo | Table @TableParams
+                                    # If health check is enabled and any target has uptime less than 24 hours, show the warning and corrective actions.
+                                    if ($HealthCheck.Uptime -and ($UptimeInfo | Where-Object { $_.$($reportTranslate.Uptime) -lt 24 })) {
+                                        Paragraph $reportTranslate.HealthCheck -Bold -Underline
+                                        BlankLine
+                                        Paragraph {
+                                            Text $reportTranslate.CorrectiveActions -Bold
+                                            Text $reportTranslate.Downtime
+                                        }
+                                    }
                                 }
                             }
                         } else {
@@ -112,6 +125,15 @@ function Get-AbrUptime {
                                 $TableParams['Caption'] = "- $($TableParams.Name)"
                             }
                             $SystemUptimeInfo | Table @TableParams
+                            # If health check is enabled and any target has uptime less than 24 hours, show the warning and corrective actions.
+                            if ($HealthCheck.Uptime -and ($SystemUptimeInfo | Where-Object { $_.$($reportTranslate.Uptime) -lt 24 })) {
+                                Paragraph $reportTranslate.HealthCheck -Bold -Underline
+                                BlankLine
+                                Paragraph {
+                                    Text $reportTranslate.CorrectiveActions -Bold
+                                    Text $reportTranslate.Downtime
+                                }
+                            }
                         }
                     }
                 }

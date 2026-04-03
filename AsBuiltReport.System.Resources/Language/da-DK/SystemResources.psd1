@@ -64,8 +64,10 @@
     ParagraphDetail = Følgende afsnit beskriver systemets oppetid.
     ParagraphSummary = Følgende tabel opsummerer systemets oppetid.
     Heading = Oppetid
-
     Uptime = Oppetid
+    HealthCheck = Sundhedstjek
+    CorrectiveActions = Korrigerende handlinger:
+    Downtime = Systemets oppetid er under 24 timer. Gennemgå systemlogfilerne for at identificere eventuelle hændelser, der kan have forårsaget den uventede nedetid.
 '@
 
     # Get-AbrPSHost

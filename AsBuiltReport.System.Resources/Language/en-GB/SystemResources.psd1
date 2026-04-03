@@ -67,6 +67,9 @@
     Heading = Uptime
 
     Uptime = Uptime
+    HealthCheck = Health Check
+    CorrectiveActions = Corrective Actions:
+    Downtime = System Uptime is below 24 hours. Review the system logs to identify any events that may have caused the unexpected downtime.
 '@
 
     # Get-AbrPSHost

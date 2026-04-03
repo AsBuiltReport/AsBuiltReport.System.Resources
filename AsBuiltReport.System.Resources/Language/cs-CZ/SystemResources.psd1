@@ -65,8 +65,10 @@
     ParagraphDetail = Následující části podrobně popisují dobu provozu systému.
     ParagraphSummary = Následující tabulka shrnuje dobu provozu systému.
     Heading = Doba provozu
-
     Uptime = Doba provozu
+    HealthCheck = Kontrola stavu
+    CorrectiveActions = Opatření k nápravě:
+    Downtime = Doba provozu systému je kratší než 24 hodin. Zkontrolujte systémové protokoly, abyste zjistili jakékoli události, které mohly způsobit neočekávané přerušení.
 '@
 
     # Get-AbrPSHost

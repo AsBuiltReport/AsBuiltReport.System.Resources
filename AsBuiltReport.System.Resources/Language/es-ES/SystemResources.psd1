@@ -64,8 +64,10 @@
     ParagraphDetail = Las siguientes secciones detallan el tiempo de actividad del sistema.
     ParagraphSummary = La siguiente tabla resume el tiempo de actividad del sistema.
     Heading = Tiempo de Actividad
-
     Uptime = Tiempo de Actividad
+    HealthCheck = Verificación de Salud
+    CorrectiveActions = Acciones Correctivas:
+    Downtime = El tiempo de actividad del sistema es inferior a 24 horas. Revise los registros del sistema para identificar cualquier evento que pueda haber causado el tiempo de inactividad inesperado.
 '@
 
     # Get-AbrPSHost

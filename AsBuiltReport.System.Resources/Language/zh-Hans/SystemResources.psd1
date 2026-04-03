@@ -67,6 +67,9 @@
     Heading = 正常运行时间
 
     Uptime = 正常运行时间
+    HealthCheck = Health Check
+    CorrectiveActions = Corrective Actions:
+    Downtime = System Uptime is below 24 hours. Review the system logs to identify any events that may have caused the unexpected downtime.
 '@
 
     # Get-AbrPSHost

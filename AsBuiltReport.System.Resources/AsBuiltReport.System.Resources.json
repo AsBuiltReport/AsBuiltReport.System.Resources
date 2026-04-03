@@ -33,5 +33,7 @@
         "PSHost": 2,
         "ProcessInfo": 1
     },
-    "HealthCheck": {}
+    "HealthCheck": {
+        "Uptime": true
+    }
 }
