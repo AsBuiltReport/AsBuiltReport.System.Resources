@@ -93,6 +93,8 @@ This report is compatible with the following PowerShell versions;
 PowerShell 5.1 or PowerShell 7, and the following PowerShell modules are required for generating a System Resources As Built Report.
 
 - [AsBuiltReport.System.Resources Module](https://www.powershellgallery.com/packages/AsBuiltReport.System.Resources/)
+- [AsBuiltReport.Diagram Module](https://www.powershellgallery.com/packages/AsBuiltReport.Diagram/)
+- [AsBuiltReport.Chart Module](https://www.powershellgallery.com/packages/AsBuiltReport.Chart/)
 
 > [!IMPORTANT]
 > This report requires AsBuiltReport.Core version 1.5.0 or later to be installed. [Multilingual-support](https://www.asbuiltreport.com/blog/2025/09/05/Multilingual-support/)

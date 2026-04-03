@@ -1,0 +1,90 @@
+# culture = 'es-ES'
+@{
+    # Get-AbrDate
+    GetAbrDate = ConvertFrom-StringData @'
+    InfoLevel  = {0} InfoLevel configurado en {1}.
+    Collecting  = Recopilando información de la fecha del sistema.
+    ParagraphDetail = Las siguientes secciones detallan la fecha del sistema.
+    ParagraphSummary = La siguiente tabla resume la fecha del sistema.
+    Heading = Fecha
+
+    Date = Fecha
+    Hour = Hora
+'@
+    # Get-AbrProcessInfo
+    GetAbrProcessInfo = ConvertFrom-StringData @'
+    InfoLevel  = {0} InfoLevel configurado en {1}.
+    Collecting  = Recopilando información del proceso del sistema.
+    ParagraphDetail = Las siguientes secciones detallan el proceso del sistema.
+    ParagraphSummary = La siguiente tabla resume los 5 principales procesos del sistema. Para obtener información más detallada, establezca el valor de InfoLevel.ProcessInfo en 2 en su archivo de configuración del informe. Ordenado por uso de CPU.
+    Heading = Procesos
+
+    Name = Nombre
+    Id = Id
+    CPU = CPU (%)
+    Memory = Memoria (MB)
+    Company = Compañía
+    Product = Producto
+    Unknown = Desconocido
+
+    Generating = Generando Diagrama de Procesos.
+    Label = Jerarquía de Procesos
+    MainDiagramLabel = Diagrama de Jerarquía de Procesos
+    Unable = No se puede generar el Diagrama de Jerarquía de Procesos.
+    MEMUsage = Uso de Memoria
+    CPUUsage = Uso de CPU
+    Processes = Procesos
+    MEMUsageChart = Uso de Memoria - Gráfico
+    CPUUsageChart = Uso de CPU - Gráfico
+'@
+
+    # Get-AbrTimeZone
+    GetAbrTimeZone = ConvertFrom-StringData @'
+    InfoLevel = {0} InfoLevel configurado en {1}.
+    Collecting  = Recopilando información de la zona horaria del sistema.
+    ParagraphDetail = Las siguientes secciones detallan la zona horaria del sistema.
+    ParagraphSummary = La siguiente tabla resume la zona horaria del sistema.
+    Heading = Zona Horaria
+
+    TimeZone = Zona Horaria
+    Id = Id
+    DisplayName = Nombre
+    CurrentTime = Hora actual
+    BaseUTCOffset = Desfase UTC base
+    SupportsDaylightSavingTime = Soporta horario de verano
+    Yes = Sí
+    No = No
+    Unknown = Desconocido
+'@
+
+    # Get-AbrUptime
+    GetAbrUptime = ConvertFrom-StringData @'
+    InfoLevel = {0} InfoLevel configurado en {1}.
+    Collecting = Recopilando información del tiempo de actividad del sistema.
+    ParagraphDetail = Las siguientes secciones detallan el tiempo de actividad del sistema.
+    ParagraphSummary = La siguiente tabla resume el tiempo de actividad del sistema.
+    Heading = Tiempo de Actividad
+    Uptime = Tiempo de Actividad
+    HealthCheck = Verificación de Salud
+    CorrectiveActions = Acciones Correctivas:
+    Downtime = El tiempo de actividad del sistema es inferior a 24 horas. Revise los registros del sistema para identificar cualquier evento que pueda haber causado el tiempo de inactividad inesperado.
+'@
+
+    # Get-AbrPSHost
+    GetAbrPSHost = ConvertFrom-StringData @'
+    InfoLevel = {0} InfoLevel configurado en {1}.
+    Collecting = Recopilando información del PowerShell Host del sistema.
+    ParagraphDetail = Las siguientes secciones detallan el PowerShell Host del sistema.
+    ParagraphSummary = La siguiente tabla resume el PowerShell Host del sistema.
+    Heading = PowerShell Host
+
+    Name = Nombre
+    Version = Versión
+    CurrentCulture = Cultura Actual
+    CurrentUICulture = Cultura UI Actual
+    DebuggerEnabled = Depurador Habilitado
+    Yes = Sí
+    No = No
+    Unknown = Desconocido
+'@
+}

@@ -1,0 +1,39 @@
+{
+    "Report": {
+        "Name": "System Resources As Built Report",
+        "Version": "1.0",
+        "Status": "Released",
+        "Language": "en-US",
+        "ShowCoverPageImage": true,
+        "ShowTableOfContents": true,
+        "ShowHeaderFooter": true,
+        "ShowTableCaptions": true
+    },
+    "Options": {
+        "EnableDiagrams": true,
+        "EnableDiagramDebug": false,
+        "EnableDiagramMainLogo": false,
+        "DiagramTheme": "White",
+        "DiagramWaterMark": "",
+        "ExportDiagrams": false,
+        "ExportDiagramsFormat": [
+            "png"
+        ],
+        "EnableDiagramSignature": false,
+        "DiagramColumnSize": 4,
+        "SignatureAuthorName": "",
+        "SignatureCompanyName": ""
+    },
+    "InfoLevel": {
+        "_comment_": "Please refer to the AsBuiltReport project contributing guide for information about how to define InfoLevels.",
+        "_comment_": "0 = Disabled, 1 = Enabled / Summary, 2 = Adv Summary, 3 = Detailed, 4 = Adv Detailed, 5 = Comprehensive",
+        "Date": 1,
+        "TimeZone": 2,
+        "Uptime": 2,
+        "PSHost": 2,
+        "ProcessInfo": 1
+    },
+    "HealthCheck": {
+        "Uptime": true
+    }
+}
