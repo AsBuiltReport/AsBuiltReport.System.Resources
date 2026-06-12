@@ -55,15 +55,15 @@
     RequiredModules = @(
         @{
             ModuleName = 'AsBuiltReport.Core';
-            ModuleVersion = '1.6.2'
+            ModuleVersion = '1.6.4'
         },
         @{
             ModuleName = 'AsBuiltReport.Chart';
-            ModuleVersion = '0.3.0'
+            ModuleVersion = '0.3.3'
         },
         @{
             ModuleName = 'AsBuiltReport.Diagram';
-            ModuleVersion = '1.0.5'
+            ModuleVersion = '1.0.7'
         }
     )
 
