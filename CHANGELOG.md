@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.4] - Unreleased
+
+### Changed
+
+- Bump AsBuiltReport.Chart to version 0.3.3 to include latest charting features and improvements
+- Bump AsBuiltReport.Diagram to version 1.0.7 to include latest diagramming features and improvements
+
+### Fixed
+
+- Fix the Main Logo table background not respecting the theme selection
+- Fix the Signature Logo table background not respecting the theme selection
+
 ## [0.1.3] - 2026-04-03
 
 ### Added
