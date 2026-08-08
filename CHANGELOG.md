@@ -9,8 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Bump AsBuiltReport.Chart to version 0.3.3 to include latest charting features and improvements
-- Bump AsBuiltReport.Diagram to version 1.0.7 to include latest diagramming features and improvements
+- Bump AsBuiltReport.Chart to version 0.3.4 to include latest charting features and improvements
+- Bump AsBuiltReport.Diagram to version 1.0.10 to include latest diagramming features and improvements
 
 ### Fixed
 
