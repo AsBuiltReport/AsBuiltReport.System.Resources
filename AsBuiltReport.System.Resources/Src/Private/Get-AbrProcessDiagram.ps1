@@ -74,12 +74,15 @@ function Get-AbrProcessDiagram {
         if ($Options.DiagramTheme -eq 'Black') {
             $Edgecolor = 'White'
             $Fontcolor = 'White'
+            $BackgroundColor = 'black'
         } elseif ($Options.DiagramTheme -eq 'Neon') {
             $Edgecolor = 'gold2'
             $Fontcolor = 'gold2'
+            $BackgroundColor = 'grey14'
         } else {
             $Edgecolor = '#71797E'
             $Fontcolor = '#565656'
+            $BackgroundColor = 'white'
         }
     }
 
@@ -92,16 +95,16 @@ function Get-AbrProcessDiagram {
             # SubGraph is a Graphviz element that groups related nodes inside a bordered cluster.
             # Here the cluster contains the System node and the top 5 process nodes.
             # Attributes control the cluster border style, label, font, and colour.
-            SubGraph ProcessH -Attributes @{Label = $($reportTranslate.Label); fontsize = 28; fontcolor = $Fontcolor; penwidth = 1.5; labelloc = 't'; style = 'dashed,rounded'; color = 'gray' } {
+            SubGraph ProcessH -Attributes @{Label = $($reportTranslate.Label); fontsize = 28; fontcolor = $Fontcolor; penwidth = 1.5; labelloc = 't'; style = 'dashed,rounded'; color = $Edgecolor } {
 
                 # Add the System node to the diagram. Add-DiaNodeIcon is a helper from the
                 # AsBuiltReport.Diagram module that renders a node with an icon image sourced
                 # from the $Images hashtable.
-                Add-NodeIcon -Name 'System' -IconDebug $IconDebug -IconType 'Process' -ImagesObj $Images -NodeObject
+                Add-NodeIcon -Name 'System' -IconDebug $IconDebug -IconType 'Process' -ImagesObj $Images -NodeObject -TableBackgroundColor $BackgroundColor -Fontcolor $Fontcolor -CellBackgroundColor $BackgroundColor
 
                 # Add one node per top-5 process. Each node shows the process name (including PID)
                 # as well as additional info attributes for CPU and Memory usage.
-                $Process | ForEach-Object { Add-NodeIcon -Name $_.Name -IconDebug $IconDebug -IconType 'Process' -ImagesObj $Images -NodeObject -AditionalInfo @{'CPU Usage' = $_.CPU; 'Memory Usage' = $_.MEM } }
+                $Process | ForEach-Object { Add-NodeIcon -Name $_.Name -IconDebug $IconDebug -IconType 'Process' -ImagesObj $Images -NodeObject -TableBackgroundColor $BackgroundColor -Fontcolor $Fontcolor -CellBackgroundColor $BackgroundColor -AditionalInfo @{'CPU Usage' = $_.CPU; 'Memory Usage' = $_.MEM } }
 
                 # Draw a dashed edge from the System node to each process node to represent the
                 # parent-child relationship. Edge colour and width follow the active theme.

@@ -1,6 +1,6 @@
 - [x] Update README.md with usage examples
-- [ ] Add HealthCheck support
-  - [ ] Test multi-language in HealthChecks
+- [x] Add HealthCheck support
+  - [x] Test multi-language in HealthChecks
 - [X] Add support for charts
   - [X] CPU usage charts
   - [X] Memory usage charts
