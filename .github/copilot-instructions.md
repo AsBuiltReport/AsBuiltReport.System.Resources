@@ -47,7 +47,7 @@ New-AsBuiltReport (AsBuiltReport.Core framework)
             ├─ Get-AbrPSHost
             └─ Get-AbrProcessInfo
                  ├─ Get-AbrProcessDiagram
-                 └─ Export-AbrDiagram
+                 └─ Export-AbrSystemDiagram
 ```
 
 ### Module Loader
@@ -136,7 +136,7 @@ $data | Table @TableParams
 
 Diagrams use Graphviz via `AsBuiltReport.Diagram`. The pipeline is always:
 1. `Get-AbrProcessDiagram` — builds the graph object
-2. `Export-AbrDiagram` — calls `New-Diagrammer`, embeds base64 in report, and optionally writes to disk
+2. `Export-AbrSystemDiagram` — calls `New-Diagrammer`, embeds base64 in report, and optionally writes to disk
 
 Diagram features are gated by `$Options.EnableDiagrams`.
 

@@ -1,4 +1,4 @@
-function Export-AbrDiagram {
+function Export-AbrSystemDiagram {
     <#
     .SYNOPSIS
         Used by As Built Report to export diagrams.
@@ -44,7 +44,7 @@ function Export-AbrDiagram {
     .EXAMPLE
         # Typically called from within a report section function such as Get-AbrProcessInfo:
         $diagram = Get-AbrProcessDiagram
-        Export-AbrDiagram -DiagramObject $diagram -MainDiagramLabel 'Process Hierarchy Diagram' -FileName 'AsBuiltReport.System.Resources'
+        Export-AbrSystemDiagram -DiagramObject $diagram -MainDiagramLabel 'Process Hierarchy Diagram' -FileName 'AsBuiltReport.System.Resources'
     .NOTES
         Version:        0.1.3
         Author:         AsBuiltReport Community

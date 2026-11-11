@@ -17,7 +17,7 @@ function Get-AbrProcessInfo {
 
         After the tabular data, two bar charts are generated (CPU usage and Memory usage) using
         the AsBuiltReport.Chart module's New-BarChart cmdlet. Finally, a process hierarchy
-        diagram is produced by calling Get-AbrProcessDiagram and exported via Export-AbrDiagram.
+        diagram is produced by calling Get-AbrProcessDiagram and exported via Export-AbrSystemDiagram.
 
         The level of detail in the output is controlled by the InfoLevel.ProcessInfo setting
         in the report configuration JSON:
@@ -152,7 +152,7 @@ function Get-AbrProcessInfo {
                         try {
                             $ProcessDiagram = Get-AbrProcessDiagram
                             if ($ProcessDiagram) {
-                                Export-AbrDiagram -DiagramObject $ProcessDiagram -MainDiagramLabel $reportTranslate.MainDiagramLabel -Filename 'AsBuiltReport.System.Resources.ProcessDiagram'
+                                Export-AbrSystemDiagram -DiagramObject $ProcessDiagram -MainDiagramLabel $reportTranslate.MainDiagramLabel -Filename 'AsBuiltReport.System.Resources.ProcessDiagram'
                             } else {
                                 Write-PScriboMessage -IsWarning $reportTranslate.Unable
                             }

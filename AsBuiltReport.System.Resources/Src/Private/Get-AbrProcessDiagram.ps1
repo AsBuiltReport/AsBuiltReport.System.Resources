@@ -23,7 +23,7 @@ function Get-AbrProcessDiagram {
         is applied to all graph elements to help troubleshoot layout issues.
 
         This function returns the resulting Graphviz graph object, which is then passed to
-        Export-AbrDiagram for rendering and embedding into the report.
+        Export-AbrSystemDiagram for rendering and embedding into the report.
     .INPUTS
         None. This function does not accept pipeline input. It reads from script-scoped
         variables ($Options, $reportTranslate, $Images) that are set by the AsBuiltReport
@@ -31,12 +31,12 @@ function Get-AbrProcessDiagram {
     .OUTPUTS
         System.Object
         Returns the Graphviz SubGraph object produced by the PSGraph DSL. The caller
-        (Get-AbrProcessInfo) passes this object to Export-AbrDiagram for rendering.
+        (Get-AbrProcessInfo) passes this object to Export-AbrSystemDiagram for rendering.
     .EXAMPLE
         # This function is called automatically by Get-AbrProcessInfo.
         # It is not designed to be called directly by end users.
         $diagram = Get-AbrProcessDiagram
-        Export-AbrDiagram -DiagramObject $diagram -MainDiagramLabel 'Process Hierarchy Diagram' -FileName 'ProcessDiagram'
+        Export-AbrSystemDiagram -DiagramObject $diagram -MainDiagramLabel 'Process Hierarchy Diagram' -FileName 'ProcessDiagram'
     .NOTES
         Version:        0.1.3
         Author:         AsBuiltReport Community

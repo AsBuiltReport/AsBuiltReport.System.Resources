@@ -35,7 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bump AsBuiltReport.Diagram to version 1.0.5 to include latest diagramming features and improvements
 - Reorganize module structure - moved module files to AsBuiltReport.System.Resources/ subdirectory
 - Update zentered/bluesky-post-action to v0.4.0 for improved stability and performance
-- Enhance diagram aspect ratio handling in Export-AbrDiagram function
+- Enhance diagram aspect ratio handling in Export-AbrSystemDiagram function
 - Update language resources for uptime monitoring and health check sections
 - Update Sample Files to reflect new features and changes
 
@@ -44,7 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add initial support for diagrams using the Diagrammer module
-  - Add Export-AbrDiagram function to handle diagram exports
+  - Add     -AbrDiagram function to handle diagram exports
   - Generate a Process Hierarchy Diagram
 - Add initial support for charts
     - Generate Memory Usage and CPU Usage charts
