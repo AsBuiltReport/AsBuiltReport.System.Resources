@@ -1,15 +1,15 @@
 <!-- ********** DO NOT EDIT THESE LINKS ********** -->
 <p align="center">
-    <a href="https://www.asbuiltreport.com/" alt="AsBuiltReport"></a>
-            <img src='https://github.com/AsBuiltReport.png' width="8%" height="8%" /></a>
+    <a href="https://www.asbuiltreport.com/">
+        <img src="https://raw.githubusercontent.com/AsBuiltReport/.github/main/assets/repo-banners/AsBuiltReport.System.Resources.png" alt="AsBuiltReport.System.Resources" width="880"></a>
 </p>
 <p align="center">
     <a href="https://www.powershellgallery.com/packages/AsBuiltReport.System.Resources/" alt="PowerShell Gallery Version">
-        <img src="https://img.shields.io/powershellgallery/v/AsBuiltReport.System.Resources.svg" /></a>
+        <img src="https://img.shields.io/powershellgallery/v/AsBuiltReport.System.Resources.svg?color=1F5FD0" /></a>
     <a href="https://www.powershellgallery.com/packages/AsBuiltReport.System.Resources/" alt="PS Gallery Downloads">
-        <img src="https://img.shields.io/powershellgallery/dt/AsBuiltReport.System.Resources.svg" /></a>
+        <img src="https://img.shields.io/powershellgallery/dt/AsBuiltReport.System.Resources.svg?color=012456" /></a>
     <a href="https://www.powershellgallery.com/packages/AsBuiltReport.System.Resources/" alt="PS Platform">
-        <img src="https://img.shields.io/powershellgallery/p/AsBuiltReport.System.Resources.svg" /></a>
+        <img src="https://img.shields.io/powershellgallery/p/AsBuiltReport.System.Resources.svg?color=FFD02B" /></a>
 </p>
 <p align="center">
     <a href="https://github.com/AsBuiltReport/AsBuiltReport.System.Resources/graphs/commit-activity" alt="GitHub Last Commit">
@@ -17,19 +17,13 @@
     <a href="https://raw.githubusercontent.com/AsBuiltReport/AsBuiltReport.System.Resources/master/LICENSE" alt="GitHub License">
         <img src="https://img.shields.io/github/license/AsBuiltReport/AsBuiltReport.System.Resources.svg" /></a>
     <a href="https://github.com/AsBuiltReport/AsBuiltReport.System.Resources/graphs/contributors" alt="GitHub Contributors">
-        <img src="https://img.shields.io/github/contributors/AsBuiltReport/AsBuiltReport.System.Resources.svg"/></a>
-</p>
-<p align="center">
-    <a href="https://twitter.com/AsBuiltReport" alt="Twitter">
-            <img src="https://img.shields.io/twitter/follow/AsBuiltReport.svg?style=social"/></a>
+        <img src="https://img.shields.io/github/contributors/AsBuiltReport/AsBuiltReport.System.Resources.svg?color=012456"/></a>
 </p>
 
 <p align="center">
     <a href='https://ko-fi.com/F1F8DEV80' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 </p>
 <!-- ********** DO NOT EDIT THESE LINKS ********** -->
-
-# System Resources As Built Report
 
 > [!IMPORTANT]
 > The intention of this report is to ilustrate the capabilities of the AsBuiltReport project. This report is not intended to be used for production environments and should only be used for testing and demonstration purposes.
@@ -40,13 +34,13 @@ System Resources As Built Report is a PowerShell module which works in conjuncti
 
 Please refer to the AsBuiltReport [website](https://www.asbuiltreport.com) for more detailed information about this project.
 
-## :books: Sample Reports
+## <img src="https://raw.githubusercontent.com/AsBuiltReport/.github/main/assets/section-icons/sample-reports.svg" alt="" width="24" height="24" align="top"> Sample Reports
 Sample System Resources As Built report HTML file: [Sample System Resources As-Built Report.html](https://htmlpreview.github.io/?https://raw.githubusercontent.com/AsBuiltReport/AsBuiltReport.System.Resources/dev/Samples/System%20Resources%20As%20Built%20Report.html)
 
-# :beginner: Getting Started
+# <img src="https://raw.githubusercontent.com/AsBuiltReport/.github/main/assets/section-icons/getting-started.svg" alt="" width="28" height="28" align="top"> Getting Started
 Below are the instructions on how to install, configure and generate a System Resources As Built report.
 
-## :floppy_disk: Supported Versions
+## <img src="https://raw.githubusercontent.com/AsBuiltReport/.github/main/assets/section-icons/supported-versions.svg" alt="" width="24" height="24" align="top"> Supported Versions
 <!-- ********** Update supported Resources versions ********** -->
 The System Resources As Built Report supports the following Resources versions;
 
@@ -58,7 +52,7 @@ This report is compatible with the following PowerShell versions;
 | :--------------------: | :----------------: |
 |   :white_check_mark:   | :white_check_mark: |
 
-## 🗺️ Language Support
+## <img src="https://raw.githubusercontent.com/AsBuiltReport/.github/main/assets/section-icons/language-support.svg" alt="" width="24" height="24" align="top"> Language Support
 ### Supported Languages
 - English (US) (Default)
 - English (GB)
@@ -88,7 +82,7 @@ This report is compatible with the following PowerShell versions;
 - Turkish (TR)
 - Vietnamese (VN)
 
-## :wrench: System Requirements
+## <img src="https://raw.githubusercontent.com/AsBuiltReport/.github/main/assets/section-icons/system-requirements.svg" alt="" width="24" height="24" align="top"> System Requirements
 <!-- ********** Update system requirements ********** -->
 PowerShell 5.1 or PowerShell 7, and the following PowerShell modules are required for generating a System Resources As Built Report.
 
@@ -99,11 +93,11 @@ PowerShell 5.1 or PowerShell 7, and the following PowerShell modules are require
 > [!IMPORTANT]
 > This report requires AsBuiltReport.Core version 1.5.0 or later to be installed. [Multilingual-support](https://www.asbuiltreport.com/blog/2025/09/05/Multilingual-support/)
 
-### :closed_lock_with_key: Required Privileges
+### <img src="https://raw.githubusercontent.com/AsBuiltReport/.github/main/assets/section-icons/required-privileges.svg" alt="" width="20" height="20" align="top"> Required Privileges
 
 Local user privileges are required to run this report.
 
-## :package: Module Installation
+## <img src="https://raw.githubusercontent.com/AsBuiltReport/.github/main/assets/section-icons/module-installation.svg" alt="" width="24" height="24" align="top"> Module Installation
 
 ### PowerShell
 <!-- ********** Add installation for any additional PowerShell module(s) ********** -->
@@ -129,7 +123,7 @@ If you are unable to use the PowerShell Gallery, you can still install the modul
 
 _Note: You are not limited to installing the module to those example paths, you can add a new entry to the environment variable PSModulePath if you want to use another path._
 
-## :pencil2: Configuration
+## <img src="https://raw.githubusercontent.com/AsBuiltReport/.github/main/assets/section-icons/configuration.svg" alt="" width="24" height="24" align="top"> Configuration
 
 The System Resources As Built Report utilises a JSON file to allow configuration of report information, options, detail and healthchecks.
 
@@ -206,7 +200,7 @@ The **Healthcheck** schema is used to toggle health checks on or off.
 
 No health checks are currently available for this report.
 
-## :computer: Examples
+## <img src="https://raw.githubusercontent.com/AsBuiltReport/.github/main/assets/section-icons/examples.svg" alt="" width="24" height="24" align="top"> Examples
 
 The following examples demonstrate how to generate a System Resources As Built Report.
 
